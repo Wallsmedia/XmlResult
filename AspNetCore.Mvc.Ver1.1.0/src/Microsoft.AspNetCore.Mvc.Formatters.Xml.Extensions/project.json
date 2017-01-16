@@ -1,0 +1,43 @@
+{
+  "description": "XmlResult+ FromXmlBody Extensions of ASP.NET Core MVC formatters for XML input and output using DataContractSerializer and XmlSerializer.",
+  "version": "1.1.0",
+  "packOptions": {
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/Wallsmedia/XmlResult"
+    },
+    "tags": [
+      "aspnetcore",
+      "aspnetcoremvc",
+      "xml",
+      "xmlresult"
+    ]
+  },
+  "buildOptions": {
+    "warningsAsErrors": true,
+    "keyFile": "../../tools/Key.snk",
+    "nowarn": [
+      "CS1591"
+    ],
+    "xmlDoc": true
+  },
+  "dependencies": {
+    "Microsoft.AspNetCore.Mvc.Core": "1.1.0",
+    "Microsoft.AspNetCore.Mvc.Formatters.Xml":"1.1.0",
+    "NETStandard.Library": "1.6.1-*"
+  },
+  "frameworks": {
+    "net451": {
+      "frameworkAssemblies": {
+        "System.Runtime.Serialization": "",
+        "System.Xml": ""
+      }
+    },
+    "netstandard1.6": {
+      "dependencies": {
+        "System.Runtime.Serialization.Xml": "4.3.0-*",
+        "System.Xml.XmlSerializer": "4.3.0-*"
+      }
+    }
+  }
+}

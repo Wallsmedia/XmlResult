@@ -1,0 +1,40 @@
+{
+  "buildOptions": {
+    "warningsAsErrors": true,
+    "keyFile": "../../tools/Key.snk"
+  },
+  "dependencies": {
+    "dotnet-test-xunit": "2.2.0-*",
+    "Microsoft.AspNetCore.Http": "1.1.0",
+    "Microsoft.AspNetCore.Mvc.Core": "1.1.0",
+    "Microsoft.AspNetCore.Mvc.DataAnnotations": "1.1.0",
+    "Microsoft.AspNetCore.Mvc.Formatters.Xml": "1.1.0",
+
+
+    "Microsoft.AspNetCore.Testing": "1.1.0-rtm-22752",
+    "Microsoft.DotNet.InternalAbstractions": "1.0.0",
+    "Moq": "4.6.36-*",
+    "xunit": "2.2.0-*",
+    "Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions": {
+      "type": "build",
+      "version": "1.1.0"
+    },
+    "Microsoft.Extensions.Logging": "1.1.0",
+    "Microsoft.Extensions.Logging.Testing": "1.1.0-*",
+    "Microsoft.Extensions.DependencyInjection": "1.1.0"
+  },
+
+  "testRunner": "xunit",
+  "frameworks": {
+    "netcoreapp1.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.1.0",
+          "type": "platform"
+        },
+        "System.Diagnostics.TraceSource": "4.3.0-*"
+      }
+    },
+    "net451": {}
+  }
+}
