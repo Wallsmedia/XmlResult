@@ -17,7 +17,7 @@
     "xunit": "2.2.0-*",
     "Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions": {
       "type": "build",
-      "version": "1.1.0"
+      "target": "project"
     },
     "Microsoft.Extensions.Logging": "1.1.0",
     "Microsoft.Extensions.Logging.Testing": "1.1.0-*",
