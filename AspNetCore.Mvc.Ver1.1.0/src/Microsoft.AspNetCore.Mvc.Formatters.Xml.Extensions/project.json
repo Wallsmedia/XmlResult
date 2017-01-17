@@ -2,8 +2,11 @@
   "description": "XmlResult + FromXmlBody Extensions of ASP.NET Core MVC formatters for XML input and output using DataContractSerializer and XmlSerializer.",
   "authors": [ "Wallsmedia Ltd" ],
   "version": "1.1.0",
-
+  "releaseNotes": "Asp .Net Core Mvc ver.1.1.0",
+  "projectUrl": "http://github.com/Wallsmedia/XmlResult",
   "packOptions": {
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
+    "summary": "XmlResult & FromXmlBody",
     "owners": [ "Wallsmedia Ltd", ".NET Foundation" ],
     "repository": {
       "type": "git",
@@ -12,6 +15,9 @@
     "tags": [ "aspnetcore", "aspnetcoremvc", "xml", "xmlresult", "fromxmlbody" ],
     "releaseNotes": "Initial version, implemented flimflams."
   },
+
+
+
 
   "buildOptions": {
     "warningsAsErrors": true,
@@ -41,7 +47,7 @@
         "System.Xml.XmlSerializer": "4.3.0-*"
       }
     }
-  },
+  }
 
 }
 
