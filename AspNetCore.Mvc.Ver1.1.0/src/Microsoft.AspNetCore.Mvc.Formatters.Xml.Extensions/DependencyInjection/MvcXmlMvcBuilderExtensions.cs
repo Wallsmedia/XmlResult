@@ -20,19 +20,19 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         /// <param name="builder">The <see cref="IMvcBuilder"/>.</param>
         /// <returns>The <see cref="IMvcBuilder"/>.</returns>
-        public static IMvcBuilder AddXmlFormaterExtentions(this IMvcBuilder builder)
+        public static IMvcBuilder AddXmlFormaterExtensions(this IMvcBuilder builder)
         {
             if (builder == null)
             {
                 throw new ArgumentNullException(nameof(builder));
             }
 
-            AddXmlFormaterExtentionsServices(builder.Services);
+            AddXmlFormaterExtensionsServices(builder.Services);
             return builder;
         }
 
         // Internal for testing.
-        internal static void AddXmlFormaterExtentionsServices(IServiceCollection services)
+        internal static void AddXmlFormaterExtensionsServices(IServiceCollection services)
         {
             services.TryAddEnumerable(
                 ServiceDescriptor.Transient<IConfigureOptions<MvcOptions>, MvcXmlDataContractSerializerMvcOptionsSetup>());

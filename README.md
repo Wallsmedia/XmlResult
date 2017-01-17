@@ -26,7 +26,7 @@ Startup.cs
 public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc().AddXmlFormaterExtentions();
+            services.AddMvc().AddXmlFormaterExtensions();
         }
 
 Controller: 
@@ -63,7 +63,7 @@ Startup.cs
 public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc().AddXmlFormaterExtentions();
+            services.AddMvc().AddXmlFormaterExtensions();
         }
 
 ```
