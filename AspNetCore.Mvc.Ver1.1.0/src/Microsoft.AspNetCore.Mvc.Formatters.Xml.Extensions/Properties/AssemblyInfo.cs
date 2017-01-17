@@ -7,5 +7,5 @@ using System.Resources;
 [assembly: AssemblyMetadata("Serviceable", "True")]
 [assembly: NeutralResourcesLanguage("en-us")]
 [assembly: AssemblyCompany("Wallsmedia LTD")]
-[assembly: AssemblyCopyright("© Wallsmedia LTD. All rights reserved.")]
+[assembly: AssemblyCopyright("2017-* © Wallsmedia LTD. All rights reserved.")]
 [assembly: AssemblyProduct("Extension of Microsoft ASP.NET Core")]

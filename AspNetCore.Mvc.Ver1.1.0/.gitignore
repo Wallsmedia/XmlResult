@@ -2,6 +2,7 @@
 [Bb]in/
 TestResults/
 .nuget/
+.nupkgs/
 .build/
 .testPublish/
 *.sln.ide/
