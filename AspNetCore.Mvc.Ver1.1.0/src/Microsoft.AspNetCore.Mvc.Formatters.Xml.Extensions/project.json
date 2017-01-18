@@ -14,10 +14,7 @@
     },
     "tags": [ "aspnetcore", "aspnetcoremvc", "xml", "xmlresult", "fromxmlbody" ],
   },
-
-
-
-
+  
   "buildOptions": {
     "warningsAsErrors": true,
     "keyFile": "../../tools/Key.snk",
@@ -29,8 +26,7 @@
 
   "dependencies": {
     "Microsoft.AspNetCore.Mvc.Core": "1.1.0",
-    "Microsoft.AspNetCore.Mvc.Formatters.Xml": "1.1.0",
-    "NETStandard.Library": "1.6.1-*"
+    "Microsoft.AspNetCore.Mvc.Formatters.Xml": "1.1.0"
   },
 
   "frameworks": {
@@ -42,6 +38,7 @@
     },
     "netstandard1.6": {
       "dependencies": {
+        "NETStandard.Library": "1.6.1-*",
         "System.Runtime.Serialization.Xml": "4.3.0-*",
         "System.Xml.XmlSerializer": "4.3.0-*"
       }
