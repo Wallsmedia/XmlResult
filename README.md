@@ -1,5 +1,8 @@
 ### XmlResult and FromXmlBody new features of the  project "Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions".
 
+### Nuget Package: 
+https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions 
+
 ### Reasons for developing these features for the aspnet/MVC project:
 
 1. When ASP.NET CORE is using as the base for development for Web REST API there is no controllable by code flexibility to have deal with flat XML and DataContract XML.
