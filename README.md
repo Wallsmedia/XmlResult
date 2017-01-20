@@ -21,7 +21,7 @@ An Action result which formats the given object as XML.
 ### FromXmlBody 
 Specifies that a parameter or property should be bound using the request body XML.
 
-1. The FromBodyXmlAttribute is the similar attribute to FromBodyAttribute in project "Microsoft.AspNetCore.Mvc.Formatters.Json".
+1. The FromBodyXmlAttribute is the similar attribute to FromBodyAttribute in project "Microsoft.AspNetCore.Mvc".
 2. FromBodyXmlAttribute forces try to use XML serializer for the HTTP Request Body with using ether "DataContractSerializer" or "XmlSerializer".
 3. It allows to use more then one type of the MVC XML formatter per Web REST Application.
 
