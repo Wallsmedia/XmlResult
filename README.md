@@ -18,7 +18,7 @@ An Action result which formats the given object as XML.
 3. It allows to return XML formatted response with the HTTP Response Body. 
 4. The property of the XmlResult defines which one of the MVC XML formatters to use either XmlSerializer or DataContractSerializer.
 
-### "FromXmlBody" 
+### FromXmlBody 
 Specifies that a parameter or property should be bound using the request body XML.
 
 1. The FromBodyXmlAttribute is the similar attribute to FromBodyAttribute in project "Microsoft.AspNetCore.Mvc.Formatters.Json".
@@ -37,10 +37,10 @@ public void ConfigureServices(IServiceCollection services)
     //  - It adds the XmlSerializer and DataContractSerializer formatters to MVC.
     //  - It adds the XmlResult and FromXmlBody Extension to MVC.
     services.AddMvc().AddXmlFormaterExtensions(); 
-}
-
+} 
+```
 XmlExtController.cs(Example): 
- ```
+```
 /// <summary>
 /// The Controller example of using of XmlResult and FromXmlBody.
 /// It demonstrates how to define which of the XML formatters DataContractSerializer
@@ -81,8 +81,8 @@ public class XmlExtController : Controller
         x.billTo.street += "No -10";
     }
 
-}  
-
+}   
+```
 Where the Models:
 
  ```
@@ -106,4 +106,5 @@ Where the Models:
     {
         [DataMember]
         public string street;
-    }
+    } 
+```
