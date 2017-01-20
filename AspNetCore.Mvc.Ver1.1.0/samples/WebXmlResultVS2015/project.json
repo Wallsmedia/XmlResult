@@ -1,7 +1,8 @@
 {
+  "description": "Example of using of XmlResult and FromXmlBody. It shows how to define which of the XML formatters DataContractSerializer or/and XmlSerializer to use for input and output in the Web Application controller actions.",
   "dependencies": {
     "Microsoft.AspNetCore.Mvc": "1.1.0",
-    //"microsoft.aspnetcore.mvc.formatters.xml.extensions": "1.1.0-*",
+    //"Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions": "1.1.0-*",
     "Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions": {
       "type": "build",
       "target": "project"

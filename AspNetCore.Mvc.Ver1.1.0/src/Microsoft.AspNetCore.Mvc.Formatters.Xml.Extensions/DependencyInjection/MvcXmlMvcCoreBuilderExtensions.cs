@@ -16,7 +16,8 @@ namespace Microsoft.Extensions.DependencyInjection
     public static class MvcXmlMvcCoreBuilderExtensions
     {
         /// <summary>
-        /// Adds the XML DataContractSerializer formatters to MVC.
+        /// Adds the XmlSerializer and DataContractSerializer formatters to MVC.
+        /// Adds the XmlResult and FromXmlBody Extension to MVC.
         /// </summary>
         /// <param name="builder">The <see cref="IMvcCoreBuilder"/>.</param>
         /// <returns>The <see cref="IMvcCoreBuilder"/>.</returns>

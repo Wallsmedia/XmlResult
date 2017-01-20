@@ -8,6 +8,12 @@ using Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions;
 
 namespace WebXmlResultVS2015.Controllers
 {
+
+    /// <summary>
+    /// The Controller example of using of XmlResult and FromXmlBody.
+    /// It demonstrates how to define which of the XML formatters DataContractSerializer
+    /// or/and XmlSerializer to use for input and output in the Web Application controller actions.
+    /// </summary>
     [Route("api/[controller]")]
     public class XmlExtController : Controller
     {

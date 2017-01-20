@@ -1,96 +1,89 @@
-### XmlResult and FromXmlBody new features of the  project "Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions".
+### XmlResult and FromXmlBody MVC XML formatter extensions.
 
-### Reasons for developing these features for the aspnet/MVC project:
+### Nuget Package: 
+https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions 
 
-1. When ASP.NET CORE is using as the base for development for Web REST API there is no controllable by code flexibility to have deal with flat XML and DataContract XML.
-2. Without work around, Indeed, it is possible to use only one type of XML formatters per application.
-3.  Currently used ObjectResult cannot provide the compulsory return XML or DataContract XML as an action result. 
-4. The order of applying:  
-		services.AddMvc().AddXmlDataContractSerializerFormatters().AddXmlSerializerFormatters();
-	and   
-		services.AddMvc().AddXmlSerializerFormatters().AddXmlDataContractSerializerFormatters();
-	affects on using the type of xml formatters for Content Type : "application/xml"
+###  MVC XML formatter's extensions allow:
 
-To improve the quality and flexibility  XML based Web REST API were developed the following features:
+1. In ASP.NET MVC CORE Web REST application to have deal with flat XML and DataContract XML.
+2. Remove ObjectResult limitation to use only one type of MVC XML serializer per WEB Application. 
+3. Satisfy all possible XML JAVA WEB REST API and XML .NET WEB REST API communication scenarios.
+4. Improve the control logics of the type MVC XML used formatters.
 
-### XmlResult 
+### XmlResult
+An Action result which formats the given object as XML.
+
 1. The XmlResult is the similar feature to JsonResult in project "Microsoft.AspNetCore.Mvc.Formatters.Json".
-2. It allows to return Xml formatted response in the body, as Action result.
-3. This feature improve the  consistence of the type XML used formatter.
-4. XmlResult allows to return XML serialized object with using ether "DataContractSerializer" ether "XmlSerializer". It allows to satisfy all REST communication scenarios from JAVA  to .NET.
-
-### Example of using in the application:
-
-Startup.cs
-```
-public void ConfigureServices(IServiceCollection services)
-        {
-            // Add framework services.
-            services.AddMvc().AddXmlFormaterExtensions();
-        }
-
-Controller: 
-
-   ```
-    // GET api/[controller]/xml
-        [HttpGet("xml")]
-        public ActionResult GetXmlObject()
-        {
-            object obj = new PurchaseOrder();
-            return new XmlResult(obj);
-        }
-
-        // GET api/[controller]/dcxml
-        [HttpGet("dcxml")]
-        public ActionResult GetDcXmlObject()
-        {
-            object obj = new PurchaseOrder();
-            return new XmlResult(obj) { XmlSerializerType = XmlSerializerType.DataContractSerializer };
-        }
-
-
-
+2. It allows to use more then one type of the MVC XML formatter per Web REST Application.
+3. It allows to return XML formatted response with the HTTP Response Body. 
+4. The property of the XmlResult defines which one of the MVC XML formatters to use either XmlSerializer or DataContractSerializer.
 
 ### "FromXmlBody" 
+Specifies that a parameter or property should be bound using the request body XML.
 
-FromBodyXmlAttribute forces try to get  XML serialized object from the http request body with using ether "DataContractSerializer" or "XmlSerializer".
+1. The FromBodyXmlAttribute is the similar attribute to FromBodyAttribute in project "Microsoft.AspNetCore.Mvc.Formatters.Json".
+2. FromBodyXmlAttribute forces try to use XML serializer for the HTTP Request Body with using ether "DataContractSerializer" or "XmlSerializer".
+3. It allows to use more then one type of the MVC XML formatter per Web REST Application.
 
 ### Example of using in the application:
 
 Startup.cs
-
 ```
 public void ConfigureServices(IServiceCollection services)
-        {
-            // Add framework services.
-            services.AddMvc().AddXmlFormaterExtensions();
-        }
+{
+    // Add framework services.
 
-```
+    // "AddXmlFormaterExtensions()" initialize the Asp .Net Core MVC to use of XmlResult and FromXmlBody:
+    //  - It adds the XmlSerializer and DataContractSerializer formatters to MVC.
+    //  - It adds the XmlResult and FromXmlBody Extension to MVC.
+    services.AddMvc().AddXmlFormaterExtensions(); 
+}
 
-Controller: 
+XmlExtController.cs(Example): 
+ ```
+/// <summary>
+/// The Controller example of using of XmlResult and FromXmlBody.
+/// It demonstrates how to define which of the XML formatters DataContractSerializer
+/// or/and XmlSerializer to use for input and output in the Web Application controller actions.
+/// </summary>
+[Route("api/[controller]")]
+public class XmlExtController : Controller
+{
+    // GET api/[controller]/xml
+    [HttpGet("xml")]
+    public ActionResult GetXmlObject()
+    {
+        object obj = new PurchaseOrder();
+        return new XmlResult(obj);
+    }
 
-    ```
+    // GET api/[controller]/dcxml
+    [HttpGet("dcxml")]
+    public ActionResult GetDcXmlObject()
+    {
+        object obj = new PurchaseOrder();
+        return new XmlResult(obj) { XmlSerializerType = XmlSerializerType.DataContractSerializer };
+    }
+
     // POST api/[controller]/xml
-        [HttpPost("xml")]
-        public void PostXml([FromXmlBody]PurchaseOrder value)
-        {
-            var x = value;
-            x.billTo.street += " 123";
-        }
+    [HttpPost("xml")]
+    public void PostXml([FromXmlBody]PurchaseOrder value)
+    {
+        var x = value;
+        x.billTo.street += " 123";
+    }
 
-        // POST api/[controller]/dcxml
-        [HttpPost("dcxml")]
-        public void PostDcXml([FromXmlBody(XmlSerializerType = XmlSerializerType.DataContractSerializer)]PurchaseOrder value)
-        {
-            var x = value;
-            x.billTo.street += "No -10";
-       }
+    // POST api/[controller]/dcxml
+    [HttpPost("dcxml")]
+    public void PostDcXml([FromXmlBody(XmlSerializerType = XmlSerializerType.DataContractSerializer)]PurchaseOrder value)
+    {
+        var x = value;
+        x.billTo.street += "No -10";
+    }
 
+}  
 
-
-
-Where:
+Where the Models:
 
  ```
    [DataContract (Namespace ="http://puchase.Interface.org/Purchase.Order")]
