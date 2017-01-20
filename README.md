@@ -1,4 +1,4 @@
-### XmlResult and FromXmlBody MVC XML formatter extensions".
+### XmlResult and FromXmlBody MVC XML formatter extensions.
 
 ### Nuget Package: 
 https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions 
