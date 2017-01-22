@@ -25,6 +25,7 @@ Specifies an action parameter or property that should be bound with using the HT
 ### Example of using in the application:
 
 Startup.cs
+
 ```
 public void ConfigureServices(IServiceCollection services)
 {
@@ -35,9 +36,11 @@ public void ConfigureServices(IServiceCollection services)
     //  - It adds the XmlResult and FromXmlBody Extension to MVC.
     services.AddMvc().AddXmlFormaterExtensions(); 
 }
+```
 
 XmlExtController.cs(Example): 
- ```
+
+```
 /// <summary>
 /// The Controller example of using of XmlResult and FromXmlBody.
 /// It demonstrates how to define which of the Xml formatters DataContractSerializer
@@ -79,10 +82,11 @@ public class XmlExtController : Controller
     }
 
 }  
+```
 
 Where the Models:
 
- ```
+```
    [DataContract (Namespace ="http://puchase.Interface.org/Purchase.Order")]
     public class PurchaseOrder
     {
@@ -104,4 +108,5 @@ Where the Models:
         [DataMember]
         public string street;
     }
+ ```
 
