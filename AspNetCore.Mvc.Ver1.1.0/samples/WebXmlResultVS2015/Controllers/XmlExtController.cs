@@ -11,7 +11,7 @@ namespace WebXmlResultVS2015.Controllers
 
     /// <summary>
     /// The Controller example of using of XmlResult and FromXmlBody.
-    /// It demonstrates how to define which of the XML formatters DataContractSerializer
+    /// It demonstrates how to define which of the Xml formatters DataContractSerializer
     /// or/and XmlSerializer to use for input and output in the Web Application controller actions.
     /// </summary>
     [Route("api/[controller]")]

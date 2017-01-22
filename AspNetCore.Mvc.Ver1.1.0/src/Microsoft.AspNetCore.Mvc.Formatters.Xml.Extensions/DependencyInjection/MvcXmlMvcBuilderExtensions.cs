@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
-    /// Extension methods for adding XML formatters to MVC.
+    /// Extension methods for adding Xml formatters to MVC.
     /// </summary>
     public static class MvcXmlMvcBuilderExtensions
     {

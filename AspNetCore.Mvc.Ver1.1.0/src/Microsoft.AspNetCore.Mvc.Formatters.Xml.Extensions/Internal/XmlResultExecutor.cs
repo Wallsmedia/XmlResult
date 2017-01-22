@@ -17,7 +17,7 @@ using Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions;
 namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal
 {
     /// <summary>
-    /// Executes a <see cref="XmlResult"/> to write to the XML response.
+    /// Executes a <see cref="XmlResult"/> to write to the Xml response.
     /// </summary>
     public class XmlResultExecutor : IXmlResultExecutor
     {

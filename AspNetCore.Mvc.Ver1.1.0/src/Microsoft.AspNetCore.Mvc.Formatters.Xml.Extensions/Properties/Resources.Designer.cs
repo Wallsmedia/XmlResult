@@ -11,7 +11,7 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions
             = new ResourceManager("Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions.Resources", typeof(Resources).GetTypeInfo().Assembly);
 
         /// <summary>
-        ///   The XML formatter {0} was not added MVC, use proper  AddXml...Formatters() extension..
+        ///   The Xml formatter {0} was not added MVC, use proper  AddXml...Formatters() extension..
         /// </summary>
         public static string XmlFromater_WasNotSetup_To_Mvc(object p0)
         {

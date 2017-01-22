@@ -15,13 +15,13 @@ using Microsoft.Extensions.Logging;
 namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions
 {
     /// <summary>
-    /// An action result which formats the given object as XML.
+    /// An action result which formats the given object as Xml.
     /// </summary>
     public class XmlResult : ActionResult
     {
         /// <summary>
         /// Creates a new <see cref="XmlResult"/> with the given <paramref name="value"/>.
-        /// Requires the XML DataContractSerializer formatters or/and the XML Serializer formatters to be add to MVC.
+        /// Requires the Xml DataContractSerializer formatters or/and the Xml Serializer formatters to be add to MVC.
         /// </summary>
         /// <param name="value">The value to format as xml.</param>
         public XmlResult(object value)
@@ -31,9 +31,9 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions
 
         /// <summary>
         /// Creates a new <see cref="XmlResult"/> with the given <paramref name="value"/>.
-        /// Requires the XML DataContractSerializer formatters or/and the XML Serializer formatters to be add to MVC.
+        /// Requires the Xml DataContractSerializer formatters or/and the Xml Serializer formatters to be add to MVC.
         /// </summary>
-        /// <param name="value">The value to format as XML.</param>
+        /// <param name="value">The value to format as Xml.</param>
         /// <param name="serializerSettings">The <see cref="XmlWriterSettings"/> to be used by
         /// the formatter.</param>
         public XmlResult(object value, XmlWriterSettings serializerSettings)

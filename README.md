@@ -1,29 +1,26 @@
-### XmlResult and FromXmlBody MVC XML formatter extensions.
+### ASP.NET Core MVC Xml formatter extensions
 
 ### Nuget Package: 
 https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions 
 
-###  MVC XML formatter's extensions allow:
+### ASP.NET Core MVC Xml formatter's extensions allow:
 
-1. In ASP.NET MVC CORE Web REST application to have deal with flat XML and DataContract XML.
-2. Remove ObjectResult limitation to use only one type of MVC XML serializer per WEB Application. 
-3. Satisfy all possible XML JAVA WEB REST API and XML .NET WEB REST API communication scenarios.
-4. Improve the control logics of the type MVC XML used formatters.
+1. ASP.NET MVC Core Web Application controller actions to control the Xml serialization type.
+2. Avoid the ObjectResult limitation to use only one type of MVC Xml serializer per ASP.NET MVC Core Web Application. 
+3. Satisfy all possible Xml JAVA REST Web API and Xml .NET REST Web API communication scenarios.
 
 ### XmlResult
-An Action result which formats the given object as XML.
+An Action result which formats the given object as Xml.
 
-1. The XmlResult is the similar feature to JsonResult in project "Microsoft.AspNetCore.Mvc.Formatters.Json".
-2. It allows to use more then one type of the MVC XML formatter per Web REST Application.
-3. It allows to return XML formatted response with the HTTP Response Body. 
-4. The property of the XmlResult defines which one of the MVC XML formatters to use either XmlSerializer or DataContractSerializer.
+1. The XmlResult is the similar feature to JsonResult in the project "Microsoft.AspNetCore.Mvc.Formatters.Json".
+2. The property "XmlSerializerType" of the XmlResult defines which one of the MVC Xml formatters to use either XmlSerializer or DataContractSerializer.
+3. It allows to return Xml formatted response with using the HTTP Response Body. 
 
-### FromXmlBody 
-Specifies that a parameter or property should be bound using the request body XML.
+### "FromXmlBody" 
+Specifies an action parameter or property that should be bound with using the HTTP request Xml body.
 
-1. The FromBodyXmlAttribute is the similar attribute to FromBodyAttribute in project "Microsoft.AspNetCore.Mvc".
-2. FromBodyXmlAttribute forces try to use XML serializer for the HTTP Request Body with using ether "DataContractSerializer" or "XmlSerializer".
-3. It allows to use more then one type of the MVC XML formatter per Web REST Application.
+1. The FromBodyXmlAttribute is the similar attribute to FromBodyAttribute in the project "Microsoft.AspNetCore.Mvc".
+2. The property "XmlSerializerType" of the FromBodyXmlAttribute defines which one of the MVC Xml formatters to use either XmlSerializer or DataContractSerializer.
 
 ### Example of using in the application:
 
@@ -37,13 +34,13 @@ public void ConfigureServices(IServiceCollection services)
     //  - It adds the XmlSerializer and DataContractSerializer formatters to MVC.
     //  - It adds the XmlResult and FromXmlBody Extension to MVC.
     services.AddMvc().AddXmlFormaterExtensions(); 
-} 
-```
+}
+
 XmlExtController.cs(Example): 
-```
+ ```
 /// <summary>
 /// The Controller example of using of XmlResult and FromXmlBody.
-/// It demonstrates how to define which of the XML formatters DataContractSerializer
+/// It demonstrates how to define which of the Xml formatters DataContractSerializer
 /// or/and XmlSerializer to use for input and output in the Web Application controller actions.
 /// </summary>
 [Route("api/[controller]")]
@@ -81,8 +78,8 @@ public class XmlExtController : Controller
         x.billTo.street += "No -10";
     }
 
-}   
-```
+}  
+
 Where the Models:
 
  ```
@@ -100,11 +97,11 @@ Where the Models:
         public Address shipTo;
     }
 
-　
+
     [DataContract(Namespace = "http://puchase.Interface.org/Purchase.Order.Address")]
     public class Address
     {
         [DataMember]
         public string street;
-    } 
-```
+    }
+
