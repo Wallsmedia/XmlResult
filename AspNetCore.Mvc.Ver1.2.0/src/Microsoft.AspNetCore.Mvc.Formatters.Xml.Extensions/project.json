@@ -1,0 +1,44 @@
+{
+  "description": "XmlResult and FromXmlBody are ASP.NET Core MVC Xml formatter’s [Microsoft.AspNetCore.Mvc.Formatters.Xml] extensions. They allow precisely define which of the Xml formatters DataContractSerializer or/and XmlSerializer to use for input and output in the Web Application controller actions.",
+  "authors": [ "Wallsmedia Ltd" ],
+  "version": "1.2.0",
+  "packOptions": {
+    "releaseNotes": "Released for Asp.NetCore.Mvc ver.1.2.0",
+    "projectUrl": "http://github.com/Wallsmedia/XmlResult",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
+    "summary": "XmlResult & FromXmlBody",
+    "owners": [ "Wallsmedia Ltd", ".NET Foundation" ],
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/Wallsmedia/XmlResult"
+    },
+    "tags": [ "aspnetcore", "aspnetcoremvc", "xml", "xmlresult", "fromxmlbody" ]
+  },
+  "buildOptions": {
+    "warningsAsErrors": true,
+    "keyFile": "../../tools/Key.snk",
+    "nowarn": [
+      "CS1591"
+    ],
+    "xmlDoc": true
+  },
+  "dependencies": {
+    "Microsoft.AspNetCore.Mvc.Core": "1.2.0-*",
+    "Microsoft.AspNetCore.Mvc.Formatters.Xml": "1.2.0-*",
+  },
+  "frameworks": {
+    "net451": {
+      "frameworkAssemblies": {
+        "System.Runtime.Serialization": "",
+        "System.Xml": ""
+      }
+    },
+    "netstandard1.6": {
+      "dependencies": {
+        "NETStandard.Library": "1.6.2-*",
+        "System.Runtime.Serialization.Xml": "4.4.0-*",
+        "System.Xml.XmlSerializer": "4.4.0-*"
+      }
+    }
+  }
+}
