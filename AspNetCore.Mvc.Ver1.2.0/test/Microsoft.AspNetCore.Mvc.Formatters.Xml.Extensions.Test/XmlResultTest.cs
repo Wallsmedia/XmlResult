@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging.Testing;
 using Xunit;
+using Xunit.Sdk;
 using Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc.Formatters.Xml.Test.Models;
@@ -20,7 +21,7 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions;
 
-namespace Microsoft.AspNetCore.Mvc.Formatters.Xml
+namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions
 {
     public class XmlResultTest
     {

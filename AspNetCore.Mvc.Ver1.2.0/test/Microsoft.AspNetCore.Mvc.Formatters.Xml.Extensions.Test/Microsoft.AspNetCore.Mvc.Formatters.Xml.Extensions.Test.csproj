@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp1.1;net452</TargetFrameworks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyName>Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions.Test</AssemblyName>
+    <AssemblyOriginatorKeyFile>../../build/Key.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+    <PackageId>Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions.Test</PackageId>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <RuntimeFrameworkVersion Condition=" '$(TargetFramework)' == 'netcoreapp1.1' ">1.2.0-*</RuntimeFrameworkVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions\Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Xml" Version="1.2.0-*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0-*" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="1.2.0-*" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="1.2.0-*" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="1.2.0-*" />
+    <PackageReference Include="Microsoft.AspNetCore.Testing" Version="1.2.0-*" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="1.2.0-*" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Testing" Version="1.2.0-*" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="1.2.0-*" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="1.2.0-*" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="1.2.0-*" />
+    <PackageReference Include="Microsoft.DotNet.InternalAbstractions" Version="1.0.0" />
+    <PackageReference Include="xunit" Version="2.2.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp1.1' ">
+    <PackageReference Include="System.Diagnostics.TraceSource" Version="4.4.0-*" />
+    <PackageReference Include="System.Runtime.Serialization.Xml" Version="4.4.0-*" />
+    <PackageReference Include="System.Xml.XmlSerializer" Version="4.4.0-*" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  
+  
+</Project>

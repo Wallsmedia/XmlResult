@@ -2,12 +2,13 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using Xunit;
+using Xunit.Sdk;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using System;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions;
 
-namespace Microsoft.AspNetCore.Mvc.Formatters.Xml
+namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions
 {
     public class FromXmlBodyAttributeTest
     {
