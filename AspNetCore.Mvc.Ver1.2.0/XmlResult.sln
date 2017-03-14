@@ -18,6 +18,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.AspNetCore.Mvc.Fo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions.Test", "test\Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions.Test\Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions.Test.csproj", "{1C8FB12F-455B-4AD7-9F4C-81DC4FCD1BB1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebXmlResult", "samples\WebXmlResult\WebXmlResult.csproj", "{645F8F26-8092-442B-8BA4-2F483EC8F897}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{1C8FB12F-455B-4AD7-9F4C-81DC4FCD1BB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C8FB12F-455B-4AD7-9F4C-81DC4FCD1BB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C8FB12F-455B-4AD7-9F4C-81DC4FCD1BB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{645F8F26-8092-442B-8BA4-2F483EC8F897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{645F8F26-8092-442B-8BA4-2F483EC8F897}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{645F8F26-8092-442B-8BA4-2F483EC8F897}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{645F8F26-8092-442B-8BA4-2F483EC8F897}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,5 +45,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C3B35DDD-DBAB-4400-87AF-01ACA917791F} = {32285FA4-6B46-4D6B-A840-2B13E4C8B58E}
 		{1C8FB12F-455B-4AD7-9F4C-81DC4FCD1BB1} = {3BA657BF-28B1-42DA-B5B0-1C4601FCF7B1}
+		{645F8F26-8092-442B-8BA4-2F483EC8F897} = {0834245D-400A-4355-88B1-DD6E390AF66D}
 	EndGlobalSection
 EndGlobal
