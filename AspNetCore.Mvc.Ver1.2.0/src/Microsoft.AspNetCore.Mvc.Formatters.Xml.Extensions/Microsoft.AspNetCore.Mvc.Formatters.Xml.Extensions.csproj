@@ -1,10 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net451;netstandard1.6</TargetFrameworks>
+  </PropertyGroup>
 
   <PropertyGroup>
     <Description>XmlResult and FromXmlBody are ASP.NET Core MVC Xml formatter�s [Microsoft.AspNetCore.Mvc.Formatters.Xml] extensions. They allow precisely define which of the Xml formatters DataContractSerializer or/and XmlSerializer to use for input and output in the Web Application controller actions.</Description>
     <VersionPrefix>1.2.0</VersionPrefix>
     <Authors>Wallsmedia Ltd</Authors>
-    <TargetFrameworks>net451;netstandard1.6</TargetFrameworks>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -12,7 +14,6 @@
     <AssemblyOriginatorKeyFile>../../build/Key.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
-	
     <PackageId>Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions</PackageId>
     <PackageTags>aspnetcore;aspnetcoremvc;xml;xmlresult;fromxmlbody</PackageTags>
     <PackageReleaseNotes>Released for Asp.NetCore.Mvc ver.1.2.0</PackageReleaseNotes>
