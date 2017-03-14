@@ -12,7 +12,6 @@ namespace WebXmlResultVS2015
     {
         public static void Main(string[] args)
         {
-            int I = 100;
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
