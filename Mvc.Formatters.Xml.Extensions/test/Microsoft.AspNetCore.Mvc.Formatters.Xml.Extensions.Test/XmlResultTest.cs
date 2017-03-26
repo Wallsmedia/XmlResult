@@ -18,15 +18,15 @@ using System.Xml;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.Extensions.Logging.Abstractions;
+using Xunit;
 
 namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions
 {
 
-    [TestClass]
     public class XmlResultTest
     {
-        [TestMethod]
+        [Fact]
         public async Task ExecuteAsync_WritesXmlContent()
         {
             // Arrange
@@ -54,10 +54,10 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions
             var s2 = Encoding.UTF8.GetString(written);
 
             //Assert.AreEqual(expected, written);
-            Assert.AreEqual(s1, s2);
-            Assert.AreEqual("application/xml; charset=utf-8", context.HttpContext.Response.ContentType);
+            Assert.Equal(s1, s2);
+            Assert.Equal("application/xml; charset=utf-8", context.HttpContext.Response.ContentType);
         }
-        [TestMethod]
+        [Fact]
         public async Task ExecuteAsync_WritesXmlContent_Negative()
         {
             // Arrange
@@ -79,10 +79,10 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions
             await result.ExecuteResultAsync(context);
 
             // Assert
-            Assert.AreEqual(context.HttpContext.Response.StatusCode, StatusCodes.Status406NotAcceptable);
+            Assert.Equal(context.HttpContext.Response.StatusCode, StatusCodes.Status406NotAcceptable);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task ExecuteAsync_WritesXmlDataContractContent()
         {
             // Arrange
@@ -97,7 +97,7 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions
             await result.ExecuteResultAsync(context);
 
             // Assert
-            Assert.AreEqual("application/xml; charset=utf-8", context.HttpContext.Response.ContentType);
+            Assert.Equal("application/xml; charset=utf-8", context.HttpContext.Response.ContentType);
 
             // Verify to as the new restored object 
             //There may be differ DataContract style has been used
@@ -108,17 +108,17 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions
             DataContractSerializer ser = new DataContractSerializer(typeof(PurchaseOrder));
             PurchaseOrder newValue = (PurchaseOrder)ser.ReadObject(XmlReader.Create(sreader));
 
-            Assert.AreEqual(value.billTo.street, newValue.billTo.street);
-            Assert.AreEqual(value.shipTo.street, newValue.shipTo.street);
+            Assert.Equal(value.billTo.street, newValue.billTo.street);
+            Assert.Equal(value.shipTo.street, newValue.shipTo.street);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task ExecuteAsync_WritesXmlDataContractContent_Negative()
         {
             // Arrange
             var value = new PurchaseOrder();
             var context = GetActionContext();
-            CreateServices(context.HttpContext,true);
+            CreateServices(context.HttpContext, true);
 
             //
             var result = new XmlResult(value) { XmlSerializerType = XmlSerializerType.DataContractSerializer };
@@ -126,7 +126,7 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions
             // Act
             await result.ExecuteResultAsync(context);
 
-            Assert.AreEqual(context.HttpContext.Response.StatusCode, StatusCodes.Status406NotAcceptable);
+            Assert.Equal(context.HttpContext.Response.StatusCode, StatusCodes.Status406NotAcceptable);
         }
 
         private static HttpContext CreateServices(HttpContext httpContext, bool empty = false)

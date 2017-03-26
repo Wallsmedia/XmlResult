@@ -17,6 +17,7 @@ using System.Xml;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal
 {

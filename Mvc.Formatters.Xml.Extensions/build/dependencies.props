@@ -1,0 +1,14 @@
+<Project>
+  <PropertyGroup>
+
+    <AspNetCoreVersion>1.2.0-*</AspNetCoreVersion>
+
+    <CoreFxVersion>4.3.0-*</CoreFxVersion>
+    <TestSdkVersion>15.0.0</TestSdkVersion>
+    <MSTestTestVersion>1.1.13</MSTestTestVersion> 
+
+    <XunitVersion>2.2.0</XunitVersion>
+    
+  </PropertyGroup>
+</Project>
+

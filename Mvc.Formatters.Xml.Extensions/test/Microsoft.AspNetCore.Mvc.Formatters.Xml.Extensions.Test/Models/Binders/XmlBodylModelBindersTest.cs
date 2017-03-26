@@ -25,6 +25,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions;
 
+
 namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Test.Models.Binders
 {
     public class XmlBodylModelBindersTest
@@ -146,14 +147,14 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Test.Models.Binders
         {
             IHttpResponseStreamWriterFactory writerFactory = new TestHttpResponseStreamWriterFactory();
             IHttpRequestStreamReaderFactory readerFactory = new TestHttpRequestStreamReaderFactory();
-            ILoggerFactory loggerFactory = NullLoggerFactory.Instance;
+            //ILoggerFactory loggerFactory = NullLoggerFactory.Instance;
             var services = new ServiceCollection();
 
             services.AddOptions();
 
             services.AddSingleton(readerFactory);
             services.AddSingleton(writerFactory);
-            services.AddSingleton(loggerFactory);
+            //services.AddSingleton(loggerFactory);
 
             services.TryAddTransient<DcXmlBodyModelBinder>();
             services.TryAddTransient<DcXmlBodyModelBinderOnly>();

@@ -1,7 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="../../build/dependencies.props" />
+
   <PropertyGroup>
-    <TargetFrameworks>net452;netcoreapp1.1</TargetFrameworks>
+    <DotNetTarget>net46</DotNetTarget>
+    <DotNetCoreAppTarget>netcoreapp2.0</DotNetCoreAppTarget>
+    <DotNetCoreAppVersion>2.0.0-*</DotNetCoreAppVersion>
+
+    <!--<TargetFramework>net46</TargetFramework>-->
+    <!--<TargetFramework>netcoreapp2.0</TargetFramework>-->
+    <TargetFrameworks>net46;netcoreapp2.0</TargetFrameworks>
+    <!--<TargetFrameworks>$(DotNetTarget);$(DotNetCoreAppTarget)</TargetFrameworks>-->
+    <!--<TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">$(DotNetCoreAppTarget)</TargetFrameworks>-->
+    <RuntimeFrameworkVersion>$(DotNetCoreAppVersion)</RuntimeFrameworkVersion>
+    <!--<RuntimeFrameworkVersion Condition=" '$(TargetFramework)' == '$(DotNetCoreAppTarget)' ">$(DotNetCoreAppVersion)</RuntimeFrameworkVersion>-->
   </PropertyGroup>
   
   <PropertyGroup>
@@ -12,19 +24,19 @@
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
     <PackageId>Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions.Test</PackageId>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
-    <RuntimeFrameworkVersion Condition=" '$(TargetFramework)' == 'netcoreapp1.1' ">1.2.0-*</RuntimeFrameworkVersion>
+    
   </PropertyGroup>
 
-  <!--<ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
-    <PackageReference Include="xunit" Version="2.2.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
-  </ItemGroup>-->
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="1.1.11" />
-    <PackageReference Include="MSTest.TestFramework" Version="1.1.11" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(TestSdkVersion)" />
+    <PackageReference Include="xunit" Version="$(XunitVersion)" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="$(XunitVersion)" />
   </ItemGroup>
+  <!--<ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(TestSdkVersion)" />
+    <PackageReference Include="MSTest.TestAdapter" Version="$(MSTestTestVersion)" />
+    <PackageReference Include="MSTest.TestFramework" Version="$(MSTestTestVersion)" />
+  </ItemGroup>-->
 
   <ItemGroup>
     <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
@@ -32,33 +44,33 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions\Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions.csproj" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Xml" Version="1.2.0-*" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Xml" Version="$(AspNetCoreVersion)" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="1.2.0-*" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="1.2.0-*" />
-    <PackageReference Include="Microsoft.AspNetCore.Http" Version="1.2.0-*" />
-    <PackageReference Include="Microsoft.AspNetCore.Testing" Version="1.2.0-*" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="1.2.0-*" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Testing" Version="1.2.0-*" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="1.2.0-*" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="1.2.0-*" />
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="1.2.0-*" />
-    <PackageReference Include="Microsoft.DotNet.InternalAbstractions" Version="1.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="$(AspNetCoreVersion)" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="$(AspNetCoreVersion)" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="$(AspNetCoreVersion)" />
+    <!--<PackageReference Include="Microsoft.AspNetCore.Testing" Version="$(AspNetCoreVersion)" />-->
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="$(AspNetCoreVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Testing" Version="$(AspNetCoreVersion)" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="$(AspNetCoreVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="$(AspNetCoreVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="$(AspNetCoreVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(AspNetCoreVersion)" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp1.1' ">
-    <PackageReference Include="System.Diagnostics.TraceSource" Version="4.4.0-*" />
-    <PackageReference Include="System.Runtime.Serialization.Xml" Version="4.4.0-*" />
-    <PackageReference Include="System.Xml.XmlSerializer" Version="4.4.0-*" />
+  <ItemGroup Condition=" '$(TargetFramework)' == '$(DotNetCoreAppTarget)' ">
+    <PackageReference Include="System.Diagnostics.TraceSource" Version="$(CoreFxVersion)" />
+    <PackageReference Include="System.Runtime.Serialization.Xml" Version="$(CoreFxVersion)" />
+    <PackageReference Include="System.Xml.XmlSerializer" Version="$(CoreFxVersion)" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == '$(DotNetTarget)' ">
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="System" />
-    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
+
   
 </Project>
