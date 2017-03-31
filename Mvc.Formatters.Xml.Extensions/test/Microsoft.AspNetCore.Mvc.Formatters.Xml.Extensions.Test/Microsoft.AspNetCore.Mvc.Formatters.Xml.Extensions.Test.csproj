@@ -7,9 +7,9 @@
     <DotNetCoreAppTarget>netcoreapp2.0</DotNetCoreAppTarget>
     <DotNetCoreAppVersion>2.0.0-*</DotNetCoreAppVersion>
 
-    <!--<TargetFramework>net46</TargetFramework>-->
+    <TargetFramework>net46</TargetFramework>
     <!--<TargetFramework>netcoreapp2.0</TargetFramework>-->
-    <TargetFrameworks>net46;netcoreapp2.0</TargetFrameworks>
+    <!--<TargetFrameworks>net46;netcoreapp2.0</TargetFrameworks>-->
     <!--<TargetFrameworks>$(DotNetTarget);$(DotNetCoreAppTarget)</TargetFrameworks>-->
     <!--<TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">$(DotNetCoreAppTarget)</TargetFrameworks>-->
     <RuntimeFrameworkVersion>$(DotNetCoreAppVersion)</RuntimeFrameworkVersion>
@@ -51,7 +51,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="$(AspNetCoreVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="$(AspNetCoreVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="$(AspNetCoreVersion)" />
-    <!--<PackageReference Include="Microsoft.AspNetCore.Testing" Version="$(AspNetCoreVersion)" />-->
+    <PackageReference Include="System.Security.Claims" Version="4.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="$(AspNetCoreVersion)" />
     <PackageReference Include="Microsoft.Extensions.Logging.Testing" Version="$(AspNetCoreVersion)" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="$(AspNetCoreVersion)" />
@@ -60,11 +60,11 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(AspNetCoreVersion)" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == '$(DotNetCoreAppTarget)' ">
+  <!--<ItemGroup Condition=" '$(TargetFramework)' == '$(DotNetCoreAppTarget)' ">
     <PackageReference Include="System.Diagnostics.TraceSource" Version="$(CoreFxVersion)" />
     <PackageReference Include="System.Runtime.Serialization.Xml" Version="$(CoreFxVersion)" />
     <PackageReference Include="System.Xml.XmlSerializer" Version="$(CoreFxVersion)" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup Condition=" '$(TargetFramework)' == '$(DotNetTarget)' ">
     <Reference Include="System.Runtime.Serialization" />
