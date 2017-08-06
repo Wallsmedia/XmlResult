@@ -2,8 +2,7 @@
   <Import Project="../../build/dependencies.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net46</TargetFrameworks>
-    <!--<RuntimeFrameworkVersion>2.0.0-*</RuntimeFrameworkVersion>-->
+    <TargetFrameworks>$(DotNetTarget);</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>

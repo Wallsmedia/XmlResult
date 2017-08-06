@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+VisualStudioVersion = 15.0.26730.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{32285FA4-6B46-4D6B-A840-2B13E4C8B58E}"
 EndProject
@@ -17,9 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{0834
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions", "src\Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions\Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions.csproj", "{C3B35DDD-DBAB-4400-87AF-01ACA917791F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions.Test", "test\Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions.Test\Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions.Test.csproj", "{1C8FB12F-455B-4AD7-9F4C-81DC4FCD1BB1}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebXmlResult", "samples\WebXmlResult\WebXmlResult.csproj", "{645F8F26-8092-442B-8BA4-2F483EC8F897}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mvc.Formatters.Xml.Extensions.Test", "test\Mvc.Formatters.Xml.Extensions.Test\Mvc.Formatters.Xml.Extensions.Test.csproj", "{6DE632C0-246E-4F89-9A9D-2616DF5C9D48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,21 +31,24 @@ Global
 		{C3B35DDD-DBAB-4400-87AF-01ACA917791F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3B35DDD-DBAB-4400-87AF-01ACA917791F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3B35DDD-DBAB-4400-87AF-01ACA917791F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C8FB12F-455B-4AD7-9F4C-81DC4FCD1BB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C8FB12F-455B-4AD7-9F4C-81DC4FCD1BB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C8FB12F-455B-4AD7-9F4C-81DC4FCD1BB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C8FB12F-455B-4AD7-9F4C-81DC4FCD1BB1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{645F8F26-8092-442B-8BA4-2F483EC8F897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{645F8F26-8092-442B-8BA4-2F483EC8F897}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{645F8F26-8092-442B-8BA4-2F483EC8F897}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{645F8F26-8092-442B-8BA4-2F483EC8F897}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DE632C0-246E-4F89-9A9D-2616DF5C9D48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DE632C0-246E-4F89-9A9D-2616DF5C9D48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DE632C0-246E-4F89-9A9D-2616DF5C9D48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DE632C0-246E-4F89-9A9D-2616DF5C9D48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C3B35DDD-DBAB-4400-87AF-01ACA917791F} = {32285FA4-6B46-4D6B-A840-2B13E4C8B58E}
-		{1C8FB12F-455B-4AD7-9F4C-81DC4FCD1BB1} = {3BA657BF-28B1-42DA-B5B0-1C4601FCF7B1}
 		{645F8F26-8092-442B-8BA4-2F483EC8F897} = {0834245D-400A-4355-88B1-DD6E390AF66D}
+		{6DE632C0-246E-4F89-9A9D-2616DF5C9D48} = {3BA657BF-28B1-42DA-B5B0-1C4601FCF7B1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9DDC9CF7-A0BA-4A93-ADAD-27F4E5CC4EE5}
 	EndGlobalSection
 EndGlobal

@@ -2,44 +2,25 @@
 
   <Import Project="../../build/dependencies.props" />
 
-  <PropertyGroup>
-    <DotNetTarget>net46</DotNetTarget>
-    <DotNetCoreAppTarget>netcoreapp2.0</DotNetCoreAppTarget>
-    <DotNetCoreAppVersion>2.0.0-*</DotNetCoreAppVersion>
 
-    <TargetFramework>net46</TargetFramework>
-    <!--<TargetFramework>netcoreapp2.0</TargetFramework>-->
-    <!--<TargetFrameworks>net46;netcoreapp2.0</TargetFrameworks>-->
-    <!--<TargetFrameworks>$(DotNetTarget);$(DotNetCoreAppTarget)</TargetFrameworks>-->
-    <!--<TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">$(DotNetCoreAppTarget)</TargetFrameworks>-->
-    <RuntimeFrameworkVersion>$(DotNetCoreAppVersion)</RuntimeFrameworkVersion>
-    <!--<RuntimeFrameworkVersion Condition=" '$(TargetFramework)' == '$(DotNetCoreAppTarget)' ">$(DotNetCoreAppVersion)</RuntimeFrameworkVersion>-->
+  <PropertyGroup>
+    <TargetFrameworks>$(DotNetCoreAppTarget);$(DotNetTarget);</TargetFrameworks>
   </PropertyGroup>
-  
+
   <PropertyGroup>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <AssemblyName>Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions.Test</AssemblyName>
     <AssemblyOriginatorKeyFile>../../build/Key.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
-    <PackageId>Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions.Test</PackageId>
+    <PackageId>Mvc.Formatters.Xml.Extensions.Test</PackageId>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
-    
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(TestSdkVersion)" />
     <PackageReference Include="xunit" Version="$(XunitVersion)" />
     <PackageReference Include="xunit.runner.visualstudio" Version="$(XunitVersion)" />
-  </ItemGroup>
-  <!--<ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(TestSdkVersion)" />
-    <PackageReference Include="MSTest.TestAdapter" Version="$(MSTestTestVersion)" />
-    <PackageReference Include="MSTest.TestFramework" Version="$(MSTestTestVersion)" />
-  </ItemGroup>-->
-
-  <ItemGroup>
-    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
   </ItemGroup>
 
   <ItemGroup>
@@ -60,11 +41,6 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(AspNetCoreVersion)" />
   </ItemGroup>
 
-  <!--<ItemGroup Condition=" '$(TargetFramework)' == '$(DotNetCoreAppTarget)' ">
-    <PackageReference Include="System.Diagnostics.TraceSource" Version="$(CoreFxVersion)" />
-    <PackageReference Include="System.Runtime.Serialization.Xml" Version="$(CoreFxVersion)" />
-    <PackageReference Include="System.Xml.XmlSerializer" Version="$(CoreFxVersion)" />
-  </ItemGroup>-->
 
   <ItemGroup Condition=" '$(TargetFramework)' == '$(DotNetTarget)' ">
     <Reference Include="System.Runtime.Serialization" />
@@ -72,5 +48,5 @@
     <Reference Include="System" />
   </ItemGroup>
 
-  
+
 </Project>

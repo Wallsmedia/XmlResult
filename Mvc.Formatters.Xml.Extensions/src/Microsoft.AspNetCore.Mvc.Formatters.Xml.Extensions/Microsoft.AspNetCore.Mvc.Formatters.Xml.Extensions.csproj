@@ -3,22 +3,16 @@
   <Import Project="../../build/dependencies.props" />
 
   <PropertyGroup>
-
-    <DotNetTarget>net46</DotNetTarget>
-    <DotNetCoreLibTarget>netstandard1.6</DotNetCoreLibTarget>
-    <DotNetCoreLibVersion>1.6.1-*</DotNetCoreLibVersion>
-
-    <TargetFrameworks>net46;netstandard1.6</TargetFrameworks>
-    <!--<TargetFrameworks>$(DotNetTarget);$(DotNetCoreLibTarget)</TargetFrameworks>-->
-    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">$(DotNetCoreLibTarget)</TargetFrameworks>
-    <NetStandardImplicitPackageVersion>$(DotNetCoreLibVersion)</NetStandardImplicitPackageVersion>
-    <!--<NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == '$(DotNetCoreLibTarget)' ">$(DotNetCoreLibVersion)</NetStandardImplicitPackageVersion>-->
+    <TargetFrameworks>$(DotNetTarget);$(DotNetCoreStandardTarget);</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup>
-    <Description>XmlResult and FromXmlBody are ASP.NET Core MVC Xml formatteres [Microsoft.AspNetCore.Mvc.Formatters.Xml] extensions. They allow precisely define which of the Xml formatters DataContractSerializer or/and XmlSerializer to use for input and output in the Web Application controller actions.</Description>
-    <VersionPrefix>1.2.0</VersionPrefix>
+    <Description>XmlResult and FromXmlBody are ASP.NET Core MVC Xml formatters [Microsoft.AspNetCore.Mvc.Formatters.Xml] extensions. They allow precisely define which of the Xml formatters DataContractSerializer or/and XmlSerializer to use for input and output in the Web Application controller actions.</Description>
+    <Version>$(XmlResultVersion)</Version>
+    <AssemblyVersion>$(XmlResultVersion)</AssemblyVersion>
+    <FileVersion>$(XmlResultVersion)</FileVersion>
     <Authors>Wallsmedia Ltd</Authors>
+    <Copyright>Copyright (c) .NET Foundation. All rights reserved.</Copyright>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -28,31 +22,28 @@
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
     <PackageId>Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions</PackageId>
     <PackageTags>aspnetcore;aspnetcoremvc;xml;xmlresult;fromxmlbody</PackageTags>
-    <PackageReleaseNotes>Released for Asp.NetCore.Mvc ver.1.2.0</PackageReleaseNotes>
+    <PackageReleaseNotes>Released for Asp.NetCore.Mvc ver.2.0.0</PackageReleaseNotes>
     <PackageProjectUrl>http://github.com/Wallsmedia/XmlResult</PackageProjectUrl>
     <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/Wallsmedia/XmlResult</RepositoryUrl>
-    <GenerateNeutralResourcesLanguageAttribute>false</GenerateNeutralResourcesLanguageAttribute>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
+  
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="$(AspNetCoreVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Xml" Version="$(AspNetCoreVersion)" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == '$(DotNetTarget)' ">
+  <ItemGroup Condition=" '$(TargetFramework)' != '$(DotNetCoreStandardTarget)' ">
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == '$(DotNetCoreLibTarget)' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == '$(DotNetCoreStandardTarget)' ">
     <PackageReference Include="System.Runtime.Serialization.Xml" Version="$(CoreFxVersion)" />
     <PackageReference Include="System.Xml.XmlSerializer" Version="$(CoreFxVersion)" />
   </ItemGroup>
