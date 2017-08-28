@@ -4,7 +4,7 @@
 
 
   <PropertyGroup>
-    <TargetFrameworks>$(DotNetCoreAppTarget);$(DotNetTarget);</TargetFrameworks>
+    <TargetFrameworks>$(DotNetCoreAppTarget)</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -40,13 +40,5 @@
     <PackageReference Include="Microsoft.Extensions.Localization" Version="$(AspNetCoreVersion)" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(AspNetCoreVersion)" />
   </ItemGroup>
-
-
-  <ItemGroup Condition=" '$(TargetFramework)' == '$(DotNetTarget)' ">
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System" />
-  </ItemGroup>
-
 
 </Project>

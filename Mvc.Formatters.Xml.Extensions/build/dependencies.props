@@ -1,19 +1,37 @@
 <Project>
   <PropertyGroup>
-    <DotNetTarget>net461</DotNetTarget>
     <DotNetCoreAppTarget>netcoreapp2.0</DotNetCoreAppTarget>
     <DotNetCoreStandardTarget>netstandard2.0</DotNetCoreStandardTarget>
-    <DotNetCoreAppVersion>2.0.0-*</DotNetCoreAppVersion>
     <XmlResultVersion>2.0.0</XmlResultVersion>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <DotNetCoreAppVersion>2.0.0-*</DotNetCoreAppVersion>
+  </PropertyGroup>
 
   <PropertyGroup>
     <AspNetCoreVersion>2.0.0-*</AspNetCoreVersion>
-    <CoreFxVersion>4.3.0-*</CoreFxVersion>
-    <TestSdkVersion>15.3.0-*</TestSdkVersion>
+    <BenchmarkDotNetVersion>0.10.3</BenchmarkDotNetVersion>
+    <CoreFxVersion>4.4.0</CoreFxVersion>
+    <DiagnosticSourceVersion>4.4.1</DiagnosticSourceVersion>
+    <DependencyModelVersion>2.0.0</DependencyModelVersion>
+    <FSharpCoreVersion>4.2.1</FSharpCoreVersion>
+    <FSharpNetSdkVersion>1.0.5</FSharpNetSdkVersion>
+    <InternalAspNetCoreSdkVersion>2.0.1-rtm-15400</InternalAspNetCoreSdkVersion>
+    <JsonNetBsonVersion>1.0.1</JsonNetBsonVersion>
+    <MoqVersion>4.7.49</MoqVersion>
+    <NETStandardImplicitPackageVersion>2.0.0</NETStandardImplicitPackageVersion>
+    <NETStandardLibraryNETFrameworkVersion>2.0.0</NETStandardLibraryNETFrameworkVersion>
+    <RoslynVersion>2.3.1</RoslynVersion>
+    <RuntimeFrameworkVersion Condition="'$(TargetFramework)'=='netcoreapp2.0'">2.0.0</RuntimeFrameworkVersion>
+    <TestSdkVersion>15.3.0</TestSdkVersion>
+    <WebApiClientVersion>5.2.2</WebApiClientVersion>
     <XunitVersion>2.3.0-*</XunitVersion>
-    <MSTestTestVersion>1.1.13-*</MSTestTestVersion> 
+    <XunitRunnerVisualStudioVersion>2.3.0-*</XunitRunnerVisualStudioVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <MSTestTestVersion>1.1.13-*</MSTestTestVersion>
   </PropertyGroup>
 </Project>
 
