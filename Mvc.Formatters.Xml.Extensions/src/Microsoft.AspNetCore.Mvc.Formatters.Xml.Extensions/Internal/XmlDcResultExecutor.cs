@@ -13,6 +13,7 @@ using System.Xml;
 using Microsoft.Extensions.Primitives;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal
 {

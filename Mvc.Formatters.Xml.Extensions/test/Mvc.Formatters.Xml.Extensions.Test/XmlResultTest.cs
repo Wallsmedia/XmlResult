@@ -20,6 +20,7 @@ using System.Xml.Serialization;
 using Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions;
 using Microsoft.Extensions.Logging.Abstractions;
 using Xunit;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions
 {

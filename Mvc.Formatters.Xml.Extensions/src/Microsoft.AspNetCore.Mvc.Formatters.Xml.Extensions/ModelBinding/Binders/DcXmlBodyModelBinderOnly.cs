@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Core;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Internal;
+using Microsoft.Extensions.Options;
 
 namespace Microsoft.AspNetCore.Mvc.ModelBinding.Binders
 {
@@ -21,11 +23,12 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding.Binders
         /// <summary>
         /// Creates a new <see cref="DcXmlBodyModelBinderOnly"/>.
         /// </summary>
+        /// <param name="options">The configuration for the MVC framework.</param>
         /// <param name="readerFactory">
         /// The <see cref="IHttpRequestStreamReaderFactory"/>, used to create <see cref="System.IO.TextReader"/>
         /// instances for reading the request body.
         /// </param>
-        public DcXmlBodyModelBinderOnly(IHttpRequestStreamReaderFactory readerFactory) : base(new List<IInputFormatter>() { new XmlDataContractSerializerInputFormatter() }, readerFactory)
+        public DcXmlBodyModelBinderOnly(IOptions<MvcOptions> options, IHttpRequestStreamReaderFactory readerFactory) : base(new List<IInputFormatter>() { new XmlDataContractSerializerInputFormatter(options.Value) }, readerFactory)
         {
         }
     }

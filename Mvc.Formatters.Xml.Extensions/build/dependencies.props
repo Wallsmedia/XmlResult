@@ -1,23 +1,21 @@
 <Project>
   <PropertyGroup>
-    <DotNetCoreAppTarget>netcoreapp2.0</DotNetCoreAppTarget>
+    <DotNetCoreAppTarget>netcoreapp2.1</DotNetCoreAppTarget>
     <DotNetCoreStandardTarget>netstandard2.0</DotNetCoreStandardTarget>
-    <XmlResultVersion>2.0.0</XmlResultVersion>
+    <XmlResultVersion>2.1.0</XmlResultVersion>
   </PropertyGroup>
 
   <PropertyGroup>
-    <DotNetCoreAppVersion>2.0.0-*</DotNetCoreAppVersion>
-    <AspNetCoreVersion>2.0.0-*</AspNetCoreVersion>
+    <DotNetCoreAppVersion>2.1.0</DotNetCoreAppVersion>
+    <AspNetCoreVersion>2.1.0</AspNetCoreVersion>
   </PropertyGroup>
 
   <PropertyGroup>
     <CoreFxVersion>4.3.0-*</CoreFxVersion>
-    <TestSdkVersion>15.3.0-*</TestSdkVersion>
-    <XunitVersion>2.3.0-*</XunitVersion>
+    <TestSdkVersion>15.7.2-*</TestSdkVersion>
+    <XunitVersion>2.3.1-*</XunitVersion>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <MSTestTestVersion>1.1.13-*</MSTestTestVersion>
-  </PropertyGroup>
+
 </Project>
 

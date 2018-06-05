@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Mvc.Internal;
 using Microsoft.Extensions.Options;
 using System;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace Microsoft.AspNetCore.Mvc.ModelBinding.Binders
 {
@@ -16,7 +17,7 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding.Binders
     /// </summary>
     public class DcXmlBodyModelBinder : IModelBinder
     {
-        BodyModelBinder _bodyModelBinder { get; }
+        BodyModelBinder BodyModelBinder { get; }
 
         /// <summary>
         /// Creates a new <see cref="XmlBodyModelBinder"/>.
@@ -38,16 +39,16 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding.Binders
                 throw new ArgumentNullException(nameof(readerFactory));
             }
 
-            IList<IInputFormatter> _formatters = options.Value.InputFormatters;
-            var list = new List<IInputFormatter>() { new XmlDataContractSerializerInputFormatter() };
-            list.AddRange(_formatters);
-            _bodyModelBinder = new BodyModelBinder(list, readerFactory);
+            IList<IInputFormatter> formatters = options.Value.InputFormatters;
+            var list = new List<IInputFormatter>() { new XmlDataContractSerializerInputFormatter(options.Value) };
+            list.AddRange(formatters);
+            BodyModelBinder = new BodyModelBinder(list, readerFactory);
         }
 
         /// <inheritdoc />
         public Task BindModelAsync(ModelBindingContext bindingContext)
         {
-            return _bodyModelBinder.BindModelAsync(bindingContext);
+            return BodyModelBinder.BindModelAsync(bindingContext);
         }
     }
 }

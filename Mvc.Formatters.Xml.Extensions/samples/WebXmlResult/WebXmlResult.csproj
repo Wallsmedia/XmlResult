@@ -29,7 +29,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="$(AspNetCoreVersion)" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="$(AspNetCoreVersion)-*" />
   </ItemGroup>
 
 </Project>

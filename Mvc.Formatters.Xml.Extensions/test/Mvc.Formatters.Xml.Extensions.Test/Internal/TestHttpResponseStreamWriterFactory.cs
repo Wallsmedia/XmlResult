@@ -3,6 +3,7 @@
 
 using System.IO;
 using System.Text;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Internal;
 using Microsoft.AspNetCore.WebUtilities;
 
