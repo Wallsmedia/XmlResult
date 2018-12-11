@@ -20,10 +20,9 @@
     <AssemblyName>Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions</AssemblyName>
     <AssemblyOriginatorKeyFile>../../build/Key.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
-    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
     <PackageId>Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions</PackageId>
     <PackageTags>aspnetcore;aspnetcoremvc;xml;xmlresult;fromxmlbody</PackageTags>
-    <PackageReleaseNotes>Released for Asp.NetCore.Mvc ver.2.0.0</PackageReleaseNotes>
+    <PackageReleaseNotes>Released for Asp.NetCore.Mvc $(AspNetCoreVersion); NETStandard.Library $(NETStandardVersion) </PackageReleaseNotes>
     <PackageProjectUrl>http://github.com/Wallsmedia/XmlResult</PackageProjectUrl>
     <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>

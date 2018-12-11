@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+using Microsoft.AspNetCore.Mvc.Formatters.Xml;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -36,13 +37,13 @@ namespace Microsoft.Extensions.DependencyInjection
         internal static void AddXmlFormaterExtensionsServices(IServiceCollection services)
         {
             services.TryAddEnumerable(
-                ServiceDescriptor.Transient<IConfigureOptions<MvcOptions>, MvcXmlDataContractSerializerMvcOptionsSetup>());
+                ServiceDescriptor.Transient<IConfigureOptions<MvcOptions>, XmlDataContractSerializerMvcOptionsSetup>());
             services.TryAddSingleton<XmlDcResultExecutor>();
             services.TryAddTransient<DcXmlBodyModelBinder>();
             services.TryAddTransient<DcXmlBodyModelBinderOnly>();
 
             services.TryAddEnumerable(
-                ServiceDescriptor.Transient<IConfigureOptions<MvcOptions>, MvcXmlSerializerMvcOptionsSetup>());
+                ServiceDescriptor.Transient<IConfigureOptions<MvcOptions>, XmlSerializerMvcOptionsSetup>());
             services.TryAddSingleton<XmlResultExecutor>();
             services.TryAddTransient<XmlBodyModelBinder>();
             services.TryAddTransient<XmlBodyModelBinderOnly>();
