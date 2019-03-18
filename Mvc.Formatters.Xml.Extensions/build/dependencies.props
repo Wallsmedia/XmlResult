@@ -1,13 +1,13 @@
 <Project>
   <PropertyGroup>
-    <DotNetCoreAppTarget>netcoreapp2.2</DotNetCoreAppTarget>
+    <DotNetCoreAppTarget>netcoreapp3.0</DotNetCoreAppTarget>
     <DotNetCoreStandardTarget>netstandard2.0</DotNetCoreStandardTarget>
-    <XmlResultVersion>2.2.0</XmlResultVersion>
+    <XmlResultVersion>3.0.0</XmlResultVersion>
   </PropertyGroup>
 
   <PropertyGroup>
-    <DotNetCoreAppVersion>2.2.0</DotNetCoreAppVersion>
-    <AspNetCoreVersion>2.2.0</AspNetCoreVersion>
+    <DotNetCoreAppVersion>3.0.0-*</DotNetCoreAppVersion>
+    <AspNetCoreVersion>3.0.0-*</AspNetCoreVersion>
     <NETStandardVersion>2.0.3</NETStandardVersion>
     <AspNetCodeGenerationVersion>2.0.4</AspNetCodeGenerationVersion>
   </PropertyGroup>

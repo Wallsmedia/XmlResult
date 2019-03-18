@@ -3,8 +3,7 @@
   <Import Project="../../build/dependencies.props" />
 
   <PropertyGroup>
-    <!--<TargetFrameworks>$(DotNetTarget);$(DotNetCoreStandardTarget);</TargetFrameworks>-->
-    <TargetFramework>$(DotNetCoreStandardTarget)</TargetFramework>
+    <TargetFramework>$(DotNetCoreAppTarget)</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup>
