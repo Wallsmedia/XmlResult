@@ -4,6 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>$(DotNetCoreAppTarget)</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -23,17 +24,25 @@
     <PackageTags>aspnetcore;aspnetcoremvc;xml;xmlresult;fromxmlbody</PackageTags>
     <PackageReleaseNotes>Released for Asp.NetCore.Mvc $(AspNetCoreVersion); NETStandard.Library $(NETStandardVersion) </PackageReleaseNotes>
     <PackageProjectUrl>http://github.com/Wallsmedia/XmlResult</PackageProjectUrl>
-    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/Wallsmedia/XmlResult</RepositoryUrl>
     <ApplicationIcon />
     <OutputType>Library</OutputType>
     <StartupObject />
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <!--<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageOutputPath>../../.nupkgs</PackageOutputPath>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
 </Project>
