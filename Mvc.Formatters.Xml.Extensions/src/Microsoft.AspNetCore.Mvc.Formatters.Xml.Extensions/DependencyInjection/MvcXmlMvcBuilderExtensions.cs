@@ -28,7 +28,8 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 throw new ArgumentNullException(nameof(builder));
             }
-
+            builder.AddXmlDataContractSerializerFormatters();
+            builder.AddXmlSerializerFormatters();
             AddXmlFormaterExtensionsServices(builder.Services);
             return builder;
         }
@@ -36,14 +37,11 @@ namespace Microsoft.Extensions.DependencyInjection
         // Internal for testing.
         internal static void AddXmlFormaterExtensionsServices(IServiceCollection services)
         {
-            services.TryAddEnumerable(
-                ServiceDescriptor.Transient<IConfigureOptions<MvcOptions>, XmlDataContractSerializerMvcOptionsSetup>());
+         
             services.TryAddSingleton<XmlDcResultExecutor>();
             services.TryAddTransient<DcXmlBodyModelBinder>();
             services.TryAddTransient<DcXmlBodyModelBinderOnly>();
 
-            services.TryAddEnumerable(
-                ServiceDescriptor.Transient<IConfigureOptions<MvcOptions>, XmlSerializerMvcOptionsSetup>());
             services.TryAddSingleton<XmlResultExecutor>();
             services.TryAddTransient<XmlBodyModelBinder>();
             services.TryAddTransient<XmlBodyModelBinderOnly>();

@@ -1,26 +1,22 @@
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-using System.Buffers;
 using System.IO;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Abstractions;
-using Microsoft.AspNetCore.Mvc.Internal;
+using Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal;
+using Microsoft.AspNetCore.Mvc.Formatters.Xml.Test.Models;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging.Testing;
-using Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Mvc.Formatters.Xml.Test.Models;
-using System.Xml;
-using System.Runtime.Serialization;
-using System.Xml.Serialization;
-using Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions;
 using Microsoft.Extensions.Logging.Abstractions;
 using Xunit;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions
 {

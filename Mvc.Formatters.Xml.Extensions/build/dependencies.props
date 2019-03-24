@@ -8,13 +8,11 @@
   <PropertyGroup>
     <DotNetCoreAppVersion>3.0.0-*</DotNetCoreAppVersion>
     <AspNetCoreVersion>3.0.0-*</AspNetCoreVersion>
-    <NETStandardVersion>2.0.3</NETStandardVersion>
-    <AspNetCodeGenerationVersion>2.0.4</AspNetCodeGenerationVersion>
   </PropertyGroup>
 
   <PropertyGroup>
     <CoreFxVersion>4.3.0-*</CoreFxVersion>
-    <TestSdkVersion>15.7.2-*</TestSdkVersion>
+    <TestSdkVersion>16.0.1-*</TestSdkVersion>
     <XunitVersion>2.4.1-*</XunitVersion>
   </PropertyGroup>
 
