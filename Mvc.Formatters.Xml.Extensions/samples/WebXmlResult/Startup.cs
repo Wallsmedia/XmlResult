@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -26,13 +26,12 @@ namespace WebApplNetcore30
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().AddNewtonsoftJson().
-            // Add framework services.
-
+            services.AddControllers()
             // "AddXmlFormaterExtensions()" initialize the Asp .Net Core MVC to use of XmlResult and FromXmlBody:
             //  - It adds the XmlSerializer and DataContractSerializer formatters to MVC.
             //  - It adds the XmlResult and FromXmlBody Extension to MVC.
-            AddXmlFormaterExtensions();
+            .AddXmlFormaterExtensions()
+            .AddNewtonsoftJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,20 +41,17 @@ namespace WebApplNetcore30
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-              //  app.UseHsts();
-            }
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
-            app.UseRouting(routes =>
+            app.UseRouting();
+
+           // app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapControllers();
+                endpoints.MapControllers();
             });
-
-            //app.UseAuthorization();
         }
     }
 }
