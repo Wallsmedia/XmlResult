@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System.IO;
+using Microsoft.Net.Http.Headers;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.Options;
 using Xunit;
 
 namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal
@@ -99,6 +101,7 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal
 
             services.AddSingleton(writerFactory);
             services.AddSingleton(loggerFactory);
+            services.AddSingleton(Options.Create(new MvcOptions()));
 
             if (!empty)
             {
@@ -111,10 +114,16 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal
             return httpContext;
         }
 
-        private static HttpContext GetHttpContext()
+        private static HttpContext GetHttpContext(string contentType = "application/xml; charset=utf-8")
         {
             var httpContext = new DefaultHttpContext();
+            var request = httpContext.Request;
+            request.Headers["Accept-Charset"] = MediaTypeHeaderValue.Parse(contentType).Charset.ToString();
+            request.ContentType = contentType;
             httpContext.Response.Body = new MemoryStream();
+            httpContext.RequestServices = new ServiceCollection()
+                .AddSingleton(Options.Create(new MvcOptions()))
+                .BuildServiceProvider();
             return httpContext;
         }
 
