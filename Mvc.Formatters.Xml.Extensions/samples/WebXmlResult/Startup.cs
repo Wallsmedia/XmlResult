@@ -26,12 +26,12 @@ namespace WebApplNetcore30
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers()
             // "AddXmlFormaterExtensions()" initialize the Asp .Net Core MVC to use of XmlResult and FromXmlBody:
             //  - It adds the XmlSerializer and DataContractSerializer formatters to MVC.
             //  - It adds the XmlResult and FromXmlBody Extension to MVC.
-            .AddXmlFormaterExtensions()
-            .AddNewtonsoftJson();
+
+            //services.AddMvc().AddXmlFormaterExtensions().AddNewtonsoftJson();
+            services.AddControllers().AddXmlFormaterExtensions().AddNewtonsoftJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
