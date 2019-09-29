@@ -11,7 +11,7 @@
     <Version>$(XmlResultVersion)</Version>
     <AssemblyVersion>$(XmlResultVersion)</AssemblyVersion>
     <FileVersion>$(XmlResultVersion)</FileVersion>
-    <Authors>Wallsmedia Ltd</Authors>
+    <Authors>Alexander Paskhin</Authors>
     <Copyright>Copyright (c) $([System.DateTime]::Now.ToString('yyyy')) .NET Foundation. All rights reserved.</Copyright>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -21,7 +21,7 @@
     <SignAssembly>true</SignAssembly>
     <PackageId>Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions</PackageId>
     <PackageTags>aspnetcore;aspnetcoremvc;xml;xmlresult;fromxmlbody</PackageTags>
-    <PackageReleaseNotes>Released for Asp.NetCore.Mvc $(AspNetCoreVersion); NETStandard.Library $(NETStandardVersion) </PackageReleaseNotes>
+    <PackageReleaseNotes>Released for  Microsoft.AspNetCore.App 3.0.0</PackageReleaseNotes>
     <PackageProjectUrl>http://github.com/Wallsmedia/XmlResult</PackageProjectUrl>
     <PackageLicenseUrl></PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
@@ -41,6 +41,7 @@
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IsPackable>true</IsPackable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageOutputPath>../../.nupkgs</PackageOutputPath>
   </PropertyGroup>
