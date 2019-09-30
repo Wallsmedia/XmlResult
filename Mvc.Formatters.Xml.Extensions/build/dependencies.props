@@ -2,7 +2,7 @@
   <PropertyGroup>
     <DotNetCoreAppTarget>netcoreapp3.0</DotNetCoreAppTarget>
     <DotNetCoreStandardTarget>netstandard2.1</DotNetCoreStandardTarget>
-    <XmlResultVersion>3.0.0</XmlResultVersion>
+    <XmlResultVersion>3.0.1</XmlResultVersion>
   </PropertyGroup>
 
   <PropertyGroup>

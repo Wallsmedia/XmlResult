@@ -39,7 +39,14 @@
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
-
+  
+  <ItemGroup>
+    <Content Update="Properties\launchSettings.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <Pack>False</Pack>
+    </Content>
+  </ItemGroup>
+  
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <IsPackable>true</IsPackable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
