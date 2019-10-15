@@ -5,6 +5,12 @@
 ### Nuget Package: 
 https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions 
 
+### Development Supported by JetBrains Open Source Programm:
+
+![Logo of Rider](https://github.com/Wallsmedia/XmlResult/tree/master/Logo/rider/logo.png)
+
+![Logo of Resharper](https://github.com/Wallsmedia/XmlResult/tree/master/Logo/resharper/logo.png)
+
 ### ASP.NET Core MVC Xml formatter's extensions allow:
 
 1. ASP.NET MVC Core Web Application controller actions to control the Xml serialization type.
