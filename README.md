@@ -5,11 +5,11 @@
 ### Nuget Package: 
 https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions 
 
-### Development Supported by JetBrains Open Source Programm:
+### Development Supported by JetBrains Open Source Program:
 
-![Logo of Rider](https://github.com/Wallsmedia/XmlResult/tree/master/Logo/rider/logo.png)
+<img src="https://github.com/Wallsmedia/XmlResult/blob/master/Logo/rider/logo.png?raw=true" Width="40p" />
 
-![Logo of Resharper](https://github.com/Wallsmedia/XmlResult/tree/master/Logo/resharper/logo.png)
+<img src="https://github.com/Wallsmedia/XmlResult/blob/master/Logo/resharper/logo.png" Width="40p" />
 
 ### ASP.NET Core MVC Xml formatter's extensions allow:
 
