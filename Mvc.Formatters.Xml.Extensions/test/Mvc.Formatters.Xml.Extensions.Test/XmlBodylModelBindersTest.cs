@@ -10,8 +10,11 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
+using Microsoft.AspNetCore.Mvc.Formatters.Xml;
 using Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions;
+using Microsoft.AspNetCore.Mvc.Formatters.Xml.Test.Models;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
@@ -21,7 +24,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Primitives;
 using Xunit;
 
-namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Test.Models.Binders
+namespace Mvc.Formatters.Xml.Extensions.Test
 {
     public class XmlBodylModelBindersTest
     {

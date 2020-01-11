@@ -1,16 +1,17 @@
 ### ASP.NET Core MVC Xml formatter extensions
 
-**Version 3.x.x** : **supports only **Microsoft.AspNetCore.App** 3.0.0-***
+**Version 3.1.x** : **supports only **Microsoft.AspNetCore.App** 3.1.0-***
+**Version 3.0.x** : **supports only **Microsoft.AspNetCore.App** 3.0.0-***
 
 ### Nuget Package: 
 https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions 
 
 ### Development Supported by JetBrains Open Source Program:
 
-<a href="https://www.jetbrains.com/?from=XmlResult"> <img src="https://github.com/Wallsmedia/XmlResult/blob/master/Logo/rider/logo.png?raw=true" Width="40p" /></a> **Fast & powerful,
+**Rider** <a href="https://www.jetbrains.com/?from=XmlResult"> <img src="https://github.com/Wallsmedia/XmlResult/blob/master/Logo/rider/logo.png?raw=true" Width="40p" /></a> **Fast & powerful,
 cross platform .NET IDE**
 
-<a href="https://www.jetbrains.com/?from=XmlResult"> <img src="https://github.com/Wallsmedia/XmlResult/blob/master/Logo/resharper/logo.png?raw=true" Width="40p" /></a> **The Visual Studio Extension for .NET Developers**
+**ReSharper** <a href="https://www.jetbrains.com/?from=XmlResult"> <img src="https://github.com/Wallsmedia/XmlResult/blob/master/Logo/resharper/logo.png?raw=true" Width="40p" /></a> **The Visual Studio Extension for .NET Developers**
 
 ### ASP.NET Core MVC Xml formatter's extensions allow:
 

@@ -19,8 +19,11 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 using Xunit;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters.Xml;
+using Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal;
 
-namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal
+namespace Mvc.Formatters.Xml.Extensions.Test
 {
     public class XmlExecutorResultTest
     {
@@ -45,7 +48,7 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal
             var result = new XmlResult(value);
 
             // Act
-            await executor.ExecuteAsync(context,result);
+            await executor.ExecuteAsync(context, result);
 
             // Assert
             var written = GetWrittenBytes(context.HttpContext);

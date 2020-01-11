@@ -21,7 +21,7 @@
     <SignAssembly>true</SignAssembly>
     <PackageId>Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions</PackageId>
     <PackageTags>aspnetcore;aspnetcoremvc;xml;xmlresult;fromxmlbody</PackageTags>
-    <PackageReleaseNotes>Released for  Microsoft.AspNetCore.App 3.0.0</PackageReleaseNotes>
+    <PackageReleaseNotes>Released for  Microsoft.AspNetCore.App 3.1.0</PackageReleaseNotes>
     <PackageProjectUrl>http://github.com/Wallsmedia/XmlResult</PackageProjectUrl>
     <PackageLicenseUrl></PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>

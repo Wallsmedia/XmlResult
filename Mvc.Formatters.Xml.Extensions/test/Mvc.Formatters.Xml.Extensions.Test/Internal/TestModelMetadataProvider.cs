@@ -6,28 +6,41 @@ using System.Collections.Generic;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Options;
 using Xunit;
 
 namespace Microsoft.AspNetCore.Mvc.ModelBinding
 {
     public class TestModelMetadataProvider : DefaultModelMetadataProvider
     {
-        // Creates a provider with all the defaults - includes data annotations
-        public static IModelMetadataProvider CreateDefaultProvider(IStringLocalizerFactory stringLocalizerFactory = null)
+        private static DataAnnotationsMetadataProvider CreateDefaultDataAnnotationsProvider(IStringLocalizerFactory stringLocalizerFactory)
         {
-            var detailsProviders = new IMetadataDetailsProvider[]
+            var localizationOptions = Options.Create(new MvcDataAnnotationsLocalizationOptions());
+            localizationOptions.Value.DataAnnotationLocalizerProvider = (modelType, localizerFactory) => localizerFactory.Create(modelType);
+
+            return new DataAnnotationsMetadataProvider(new MvcOptions(), localizationOptions, stringLocalizerFactory);
+        }
+
+        // Creates a provider with all the defaults - includes data annotations
+        public static ModelMetadataProvider CreateDefaultProvider(IStringLocalizerFactory stringLocalizerFactory = null)
+        {
+            var detailsProviders = new List<IMetadataDetailsProvider>
             {
                 new DefaultBindingMetadataProvider(),
                 new DefaultValidationMetadataProvider(),
-                new DataAnnotationsMetadataProvider(
-                    new TestOptionsManager<MvcDataAnnotationsLocalizationOptions>(),
-                    stringLocalizerFactory),
+                CreateDefaultDataAnnotationsProvider(stringLocalizerFactory),
                 new DataMemberRequiredBindingMetadataProvider(),
             };
 
+            MvcCoreMvcOptionsSetup.ConfigureAdditionalModelMetadataDetailsProviders(detailsProviders);
+
+            var validationProviders = TestModelValidatorProvider.CreateDefaultProvider();
+            detailsProviders.Add(new HasValidatorsValidationMetadataProvider(validationProviders.ValidatorProviders));
+
             var compositeDetailsProvider = new DefaultCompositeMetadataDetailsProvider(detailsProviders);
-            return new DefaultModelMetadataProvider(compositeDetailsProvider, new TestOptionsManager<MvcOptions>());
+            return new DefaultModelMetadataProvider(compositeDetailsProvider, Options.Create(new MvcOptions()));
         }
 
         public static IModelMetadataProvider CreateDefaultProvider(IList<IMetadataDetailsProvider> providers)
@@ -37,15 +50,21 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
                 new DefaultBindingMetadataProvider(),
                 new DefaultValidationMetadataProvider(),
                 new DataAnnotationsMetadataProvider(
-                    new TestOptionsManager<MvcDataAnnotationsLocalizationOptions>(),
+                    new MvcOptions(),
+                    Options.Create(new MvcDataAnnotationsLocalizationOptions()),
                     stringLocalizerFactory: null),
                 new DataMemberRequiredBindingMetadataProvider(),
             };
 
+            MvcCoreMvcOptionsSetup.ConfigureAdditionalModelMetadataDetailsProviders(detailsProviders);
+
             detailsProviders.AddRange(providers);
 
+            var validationProviders = TestModelValidatorProvider.CreateDefaultProvider();
+            detailsProviders.Add(new HasValidatorsValidationMetadataProvider(validationProviders.ValidatorProviders));
+
             var compositeDetailsProvider = new DefaultCompositeMetadataDetailsProvider(detailsProviders);
-            return new DefaultModelMetadataProvider(compositeDetailsProvider, new TestOptionsManager<MvcOptions>());
+            return new DefaultModelMetadataProvider(compositeDetailsProvider, Options.Create(new MvcOptions()));
         }
 
         public static IModelMetadataProvider CreateProvider(IList<IMetadataDetailsProvider> providers)
@@ -57,7 +76,7 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
             }
 
             var compositeDetailsProvider = new DefaultCompositeMetadataDetailsProvider(detailsProviders);
-            return new DefaultModelMetadataProvider(compositeDetailsProvider, new TestOptionsManager<MvcOptions>());
+            return new DefaultModelMetadataProvider(compositeDetailsProvider, Options.Create(new MvcOptions()));
         }
 
         private readonly TestModelMetadataDetailsProvider _detailsProvider;
@@ -74,11 +93,12 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
                       new DefaultBindingMetadataProvider(),
                       new DefaultValidationMetadataProvider(),
                       new DataAnnotationsMetadataProvider(
-                          new TestOptionsManager<MvcDataAnnotationsLocalizationOptions>(),
+                          new MvcOptions(),
+                          Options.Create(new MvcDataAnnotationsLocalizationOptions()),
                           stringLocalizerFactory: null),
                       detailsProvider
                   }),
-                  new TestOptionsManager<MvcOptions>())
+                  Options.Create(new MvcOptions()))
         {
             _detailsProvider = detailsProvider;
         }
@@ -102,10 +122,19 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
             var property = containerType.GetRuntimeProperty(propertyName);
             Assert.NotNull(property);
 
-            var key = ModelMetadataIdentity.ForProperty(property.PropertyType, propertyName, containerType);
+            var key = ModelMetadataIdentity.ForProperty(property, property.PropertyType, containerType);
 
             var builder = new MetadataBuilder(key);
             _detailsProvider.Builders.Add(builder);
+            return builder;
+        }
+
+        public IMetadataBuilder ForParameter(ParameterInfo parameter)
+        {
+            var key = ModelMetadataIdentity.ForParameter(parameter);
+            var builder = new MetadataBuilder(key);
+            _detailsProvider.Builders.Add(builder);
+
             return builder;
         }
 
@@ -159,7 +188,7 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
         {
             private List<Action<BindingMetadata>> _bindingActions = new List<Action<BindingMetadata>>();
             private List<Action<DisplayMetadata>> _displayActions = new List<Action<DisplayMetadata>>();
-            private List<Action<ValidationMetadata>> _valiationActions = new List<Action<ValidationMetadata>>();
+            private List<Action<ValidationMetadata>> _validationActions = new List<Action<ValidationMetadata>>();
 
             private readonly ModelMetadataIdentity _key;
 
@@ -194,7 +223,7 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
             {
                 if (_key.Equals(context.Key))
                 {
-                    foreach (var action in _valiationActions)
+                    foreach (var action in _validationActions)
                     {
                         action(context.ValidationMetadata);
                     }
@@ -215,7 +244,7 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
 
             public IMetadataBuilder ValidationDetails(Action<ValidationMetadata> action)
             {
-                _valiationActions.Add(action);
+                _validationActions.Add(action);
                 return this;
             }
         }
