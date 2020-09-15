@@ -1,7 +1,7 @@
 ### ASP.NET Core MVC Xml formatter extensions
 
-**Version 3.1.x** : **supports only **Microsoft.AspNetCore.App** 3.1.0-***
-**Version 3.0.x** : **supports only **Microsoft.AspNetCore.App** 3.0.0-***
+**Version 5.x.x** : **supports only **Microsoft.AspNetCore.App** 5.0-***
+
 
 ### Nuget Package: 
 https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions 
