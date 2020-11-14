@@ -4,11 +4,8 @@
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using System.Xml.Serialization;
-using Microsoft.AspNetCore.Mvc.Formatters.Xml;
 using Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 

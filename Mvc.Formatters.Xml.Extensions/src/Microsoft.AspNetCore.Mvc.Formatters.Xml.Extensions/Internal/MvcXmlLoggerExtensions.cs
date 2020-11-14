@@ -3,7 +3,6 @@
 
 using System;
 using Microsoft.Extensions.Logging;
-using System.IO;
 using Microsoft.AspNetCore.Http;
 using System.Text;
 
