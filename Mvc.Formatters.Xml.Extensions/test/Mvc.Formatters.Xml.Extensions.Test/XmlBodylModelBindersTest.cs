@@ -29,8 +29,8 @@ namespace Mvc.Formatters.Xml.Extensions.Test
     public class XmlBodylModelBindersTest
     {
         [Theory]
-        [InlineData(XmlSerializerType.XmlSeriralizer, false)]
-        [InlineData(XmlSerializerType.XmlSeriralizer, true)]
+        [InlineData(XmlSerializerType.XmlSerializer, false)]
+        [InlineData(XmlSerializerType.XmlSerializer, true)]
         [InlineData(XmlSerializerType.DataContractSerializer, false)]
         [InlineData(XmlSerializerType.DataContractSerializer, true)]
         public async void BindTheXmlBodyToTheParameterValue(XmlSerializerType xmlSerializerType, bool useXmlBinderOnly)
@@ -43,7 +43,7 @@ namespace Mvc.Formatters.Xml.Extensions.Test
             xmlWriterSettings.CloseOutput = false;
             var textw = new StringWriter();
             var writer = XmlWriter.Create(textw, xmlWriterSettings);
-            if (xmlSerializerType == XmlSerializerType.XmlSeriralizer)
+            if (xmlSerializerType == XmlSerializerType.XmlSerializer)
             {
                 var xmlSerializer = new XmlSerializer(value.GetType());
                 xmlSerializer.Serialize(writer, value);

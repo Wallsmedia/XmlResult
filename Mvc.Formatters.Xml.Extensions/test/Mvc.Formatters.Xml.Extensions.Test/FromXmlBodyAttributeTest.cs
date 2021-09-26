@@ -12,8 +12,8 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml
     public class FromXmlBodyAttributeTest
     {
         [Theory]
-        [InlineData(XmlSerializerType.XmlSeriralizer, false,typeof(XmlBodyModelBinder))]
-        [InlineData(XmlSerializerType.XmlSeriralizer, true,typeof(XmlBodyModelBinderOnly))]
+        [InlineData(XmlSerializerType.XmlSerializer, false,typeof(XmlBodyModelBinder))]
+        [InlineData(XmlSerializerType.XmlSerializer, true,typeof(XmlBodyModelBinderOnly))]
         [InlineData(XmlSerializerType.DataContractSerializer, false, typeof(DcXmlBodyModelBinder))]
         [InlineData(XmlSerializerType.DataContractSerializer, true, typeof(DcXmlBodyModelBinderOnly))]
         public void Create_FromXmlBodyAttribute(XmlSerializerType xmlSerializerType, bool useXmlBinderOnly,Type expectedType)

@@ -82,7 +82,7 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions
 
             switch (XmlSerializerType)
             {
-                case XmlSerializerType.XmlSeriralizer:
+                case XmlSerializerType.XmlSerializer:
                     executor = services.GetService<XmlResultExecutor>();
                     serviceName = "XmlSerializerFormatterServices";
                     break;
