@@ -1,5 +1,7 @@
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+
+#nullable enable
 
 using System;
 using System.Collections.Generic;
@@ -24,7 +26,7 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding.Metadata
             // BinderModelName
             foreach (var binderModelNameAttribute in context.Attributes.OfType<IModelNameProvider>())
             {
-                if (binderModelNameAttribute?.Name != null)
+                if (binderModelNameAttribute.Name != null)
                 {
                     context.BindingMetadata.BinderModelName = binderModelNameAttribute.Name;
                     break;
@@ -80,7 +82,7 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding.Metadata
             }
         }
 
-        internal static ConstructorInfo GetBoundConstructor(Type type)
+        internal static ConstructorInfo? GetBoundConstructor(Type type)
         {
             if (type.IsAbstract || type.IsValueType || type.IsInterface)
             {
@@ -96,7 +98,7 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding.Metadata
             return GetRecordTypeConstructor(type, constructors);
         }
 
-        private static ConstructorInfo GetRecordTypeConstructor(Type type, ConstructorInfo[] constructors)
+        private static ConstructorInfo? GetRecordTypeConstructor(Type type, ConstructorInfo[] constructors)
         {
             if (!IsRecordType(type))
             {
@@ -144,25 +146,25 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding.Metadata
             {
                 // Based on the state of the art as described in https://github.com/dotnet/roslyn/issues/45777
                 var cloneMethod = type.GetMethod("<Clone>$", BindingFlags.Public | BindingFlags.Instance);
-                return cloneMethod != null && cloneMethod.ReturnType == type;
+                return cloneMethod != null && (cloneMethod.ReturnType == type || cloneMethod.ReturnType == type.BaseType);
             }
         }
 
-        private static BindingBehaviorAttribute FindBindingBehavior(BindingMetadataProviderContext context)
+        private static BindingBehaviorAttribute? FindBindingBehavior(BindingMetadataProviderContext context)
         {
             switch (context.Key.MetadataKind)
             {
                 case ModelMetadataKind.Property:
                     // BindingBehavior can fall back to attributes on the Container Type, but we should ignore
                     // attributes on the Property Type.
-                    var matchingAttributes = context.PropertyAttributes.OfType<BindingBehaviorAttribute>();
+                    var matchingAttributes = context.PropertyAttributes!.OfType<BindingBehaviorAttribute>();
                     return matchingAttributes.FirstOrDefault()
-                        ?? context.Key.ContainerType.GetTypeInfo()
+                        ?? context.Key.ContainerType!
                             .GetCustomAttributes(typeof(BindingBehaviorAttribute), inherit: true)
                             .OfType<BindingBehaviorAttribute>()
                             .FirstOrDefault();
                 case ModelMetadataKind.Parameter:
-                    return context.ParameterAttributes.OfType<BindingBehaviorAttribute>().FirstOrDefault();
+                    return context.ParameterAttributes!.OfType<BindingBehaviorAttribute>().FirstOrDefault();
                 default:
                     return null;
             }

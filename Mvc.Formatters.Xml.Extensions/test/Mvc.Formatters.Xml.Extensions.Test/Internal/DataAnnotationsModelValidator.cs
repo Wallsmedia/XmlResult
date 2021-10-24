@@ -1,5 +1,5 @@
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
 
 using System;
 using System.Collections.Generic;
@@ -65,18 +65,18 @@ namespace Microsoft.AspNetCore.Mvc.DataAnnotations
             if (validationContext.ModelMetadata == null)
             {
                 throw new ArgumentException(
-                    " FormatPropertyOfTypeCannotBeNull " 
-                        + nameof(validationContext.ModelMetadata)
-                        + typeof(ModelValidationContext)
-                        + nameof(validationContext));
+                    Resources.FormatPropertyOfTypeCannotBeNull(
+                        nameof(validationContext.ModelMetadata),
+                        typeof(ModelValidationContext)),
+                    nameof(validationContext));
             }
             if (validationContext.MetadataProvider == null)
             {
                 throw new ArgumentException(
-                    " FormatPropertyOfTypeCannotBeNull "
-                    + nameof(validationContext.MetadataProvider)
-                    + typeof(ModelValidationContext)
-                    + nameof(validationContext));
+                    Resources.FormatPropertyOfTypeCannotBeNull(
+                        nameof(validationContext.MetadataProvider),
+                        typeof(ModelValidationContext)),
+                    nameof(validationContext));
             }
 
             var metadata = validationContext.ModelMetadata;
@@ -93,7 +93,7 @@ namespace Microsoft.AspNetCore.Mvc.DataAnnotations
             };
 
             var result = Attribute.GetValidationResult(validationContext.Model, context);
-            if (result != ValidationResult.Success)
+            if (result is not null)
             {
                 string errorMessage;
                 if (_stringLocalizer != null &&

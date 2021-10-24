@@ -1,9 +1,12 @@
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+
+#nullable enable
 
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Threading;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Formatters;
@@ -15,6 +18,10 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
+using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+
 
 namespace Microsoft.AspNetCore.Mvc
 {
@@ -89,7 +96,7 @@ namespace Microsoft.AspNetCore.Mvc
             options.OutputFormatters.Add(new StringOutputFormatter());
             options.OutputFormatters.Add(new StreamOutputFormatter());
 
-            var jsonOutputFormatter = TestSystemTextJsonOutputFormatter.CreateFormatter(_jsonOptions.Value);
+            var jsonOutputFormatter = CreateFormatter(_jsonOptions.Value);
             options.OutputFormatters.Add(jsonOutputFormatter);
 
             // Set up ValueProviders
@@ -104,6 +111,22 @@ namespace Microsoft.AspNetCore.Mvc
 
             // Set up validators
             options.ModelValidatorProviders.Add(new DefaultModelValidatorProvider());
+        }
+
+        internal static SystemTextJsonOutputFormatter CreateFormatter(JsonOptions jsonOptions)
+        {
+            var jsonSerializerOptions = jsonOptions.JsonSerializerOptions;
+
+            if (jsonSerializerOptions.Encoder is null)
+            {
+                // If the user hasn't explicitly configured the encoder, use the less strict encoder that does not encode all non-ASCII characters.
+                jsonSerializerOptions = new JsonSerializerOptions(jsonSerializerOptions)
+                {
+                    Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                };
+            }
+
+            return new SystemTextJsonOutputFormatter(jsonSerializerOptions);
         }
 
         public void PostConfigure(string name, MvcOptions options)
@@ -132,6 +155,11 @@ namespace Microsoft.AspNetCore.Mvc
 
             // Add types to be excluded from Validation
             modelMetadataDetailsProviders.Add(new SuppressChildValidationMetadataProvider(typeof(Type)));
+            modelMetadataDetailsProviders.Add(new SuppressChildValidationMetadataProvider(typeof(Delegate)));
+            modelMetadataDetailsProviders.Add(new SuppressChildValidationMetadataProvider(typeof(MethodInfo)));
+            modelMetadataDetailsProviders.Add(new SuppressChildValidationMetadataProvider(typeof(MemberInfo)));
+            modelMetadataDetailsProviders.Add(new SuppressChildValidationMetadataProvider(typeof(ParameterInfo)));
+            modelMetadataDetailsProviders.Add(new SuppressChildValidationMetadataProvider(typeof(Assembly)));
             modelMetadataDetailsProviders.Add(new SuppressChildValidationMetadataProvider(typeof(Uri)));
             modelMetadataDetailsProviders.Add(new SuppressChildValidationMetadataProvider(typeof(CancellationToken)));
             modelMetadataDetailsProviders.Add(new SuppressChildValidationMetadataProvider(typeof(IFormFile)));

@@ -1,11 +1,12 @@
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
 
-using System.Diagnostics;
+using System;
 using System.Text;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Net.Http.Headers;
 
-namespace Microsoft.AspNetCore.Mvc.Formatters
+namespace Microsoft.AspNetCore.Internal
 {
     internal static class ResponseContentTypeHelper
     {
@@ -22,29 +23,21 @@ namespace Microsoft.AspNetCore.Mvc.Formatters
         /// encoding is used to write the response and the ContentType header is set to be "text/plain" without any
         /// "charset" information.
         /// </remarks>
-        /// <param name="actionResultContentType">ContentType set on the action result</param>
-        /// <param name="httpResponseContentType"><see cref="HttpResponse.ContentType"/> property set
-        /// on <see cref="HttpResponse"/></param>
-        /// <param name="defaultContentType">The default content type of the action result.</param>
-        /// <param name="resolvedContentType">The content type to be used for the response content type header</param>
-        /// <param name="resolvedContentTypeEncoding">Encoding to be used for writing the response</param>
         public static void ResolveContentTypeAndEncoding(
             string actionResultContentType,
             string httpResponseContentType,
-            string defaultContentType,
+            (string defaultContentType, Encoding defaultEncoding) @default,
+            Func<string, Encoding> getEncoding,
             out string resolvedContentType,
             out Encoding resolvedContentTypeEncoding)
         {
-            Debug.Assert(defaultContentType != null);
-
-            var defaultContentTypeEncoding = MediaType.GetEncoding(defaultContentType);
-            Debug.Assert(defaultContentTypeEncoding != null);
+            var (defaultContentType, defaultContentTypeEncoding) = @default;
 
             // 1. User sets the ContentType property on the action result
             if (actionResultContentType != null)
             {
                 resolvedContentType = actionResultContentType;
-                var actionResultEncoding = MediaType.GetEncoding(actionResultContentType);
+                var actionResultEncoding = getEncoding(actionResultContentType);
                 resolvedContentTypeEncoding = actionResultEncoding ?? defaultContentTypeEncoding;
                 return;
             }
@@ -52,7 +45,7 @@ namespace Microsoft.AspNetCore.Mvc.Formatters
             // 2. User sets the ContentType property on the http response directly
             if (!string.IsNullOrEmpty(httpResponseContentType))
             {
-                var mediaTypeEncoding = MediaType.GetEncoding(httpResponseContentType);
+                var mediaTypeEncoding = getEncoding(httpResponseContentType);
                 if (mediaTypeEncoding != null)
                 {
                     resolvedContentType = httpResponseContentType;
@@ -70,6 +63,16 @@ namespace Microsoft.AspNetCore.Mvc.Formatters
             // 3. Fall-back to the default content type
             resolvedContentType = defaultContentType;
             resolvedContentTypeEncoding = defaultContentTypeEncoding;
+        }
+
+        public static Encoding GetEncoding(string mediaType)
+        {
+            if (MediaTypeHeaderValue.TryParse(mediaType, out var parsed))
+            {
+                return parsed.Encoding;
+            }
+
+            return default;
         }
     }
 }

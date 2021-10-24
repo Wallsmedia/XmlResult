@@ -1,10 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../build/dependencies.props" />
 
   <PropertyGroup>
     <TargetFramework>$(DotNetCoreAppTarget)</TargetFramework>
+    <IsAspNetCoreApp>true</IsAspNetCoreApp>
+    <PackageTags>aspnetcore;aspnetcoremvc;xml</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup Condition="'$(DisableImplicitFrameworkReferences)' != 'true' And '$(TargetFrameworkIdentifier)' == '.NETCoreApp' And '$(_TargetFrameworkVersionWithoutV)' &gt;= '3.0'">
+    <FrameworkReference Include="Microsoft.AspNetCore.App" IsImplicitlyDefined="true" />
+  </ItemGroup>
+
 
   <PropertyGroup>
     <Description>XmlResult and FromXmlBody are ASP.NET Core MVC Xml formatters [Microsoft.AspNetCore.Mvc.Formatters.Xml] extensions. They allow precisely define which of the Xml formatters DataContractSerializer or/and XmlSerializer to use for input and output in the Web Application controller actions.</Description>
@@ -21,7 +28,7 @@
     <SignAssembly>true</SignAssembly>
     <PackageId>Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions</PackageId>
     <PackageTags>aspnetcore;aspnetcoremvc;xml;xmlresult;fromxmlbody</PackageTags>
-    <PackageReleaseNotes>Released for  Microsoft.AspNetCore.App 5.0.0</PackageReleaseNotes>
+    <PackageReleaseNotes>Released for  Microsoft.AspNetCore.App 6.0.0</PackageReleaseNotes>
     <PackageProjectUrl>http://github.com/Wallsmedia/XmlResult</PackageProjectUrl>
     <PackageLicenseUrl></PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>

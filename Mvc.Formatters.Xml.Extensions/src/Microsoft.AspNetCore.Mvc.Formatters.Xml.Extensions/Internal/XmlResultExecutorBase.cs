@@ -9,6 +9,7 @@ using Microsoft.Net.Http.Headers;
 using Microsoft.Extensions.Primitives;
 using Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Internal;
 
 namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal
 {
@@ -21,6 +22,8 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal
         {
             Encoding = Encoding.UTF8
         }.ToString();
+
+        private static readonly Encoding DefaultEncoding = Encoding.UTF8;
 
         /// <summary>
         /// Creates a new <see cref="XmlResultExecutor"/>.
@@ -88,7 +91,8 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal
             ResponseContentTypeHelper.ResolveContentTypeAndEncoding(
                                                     result.ContentType,
                                                     response.ContentType,
-                                                    DefaultContentType,
+                                                    (DefaultContentType, DefaultEncoding),
+                                                    ResponseContentTypeHelper.GetEncoding,
                                                     out resolvedContentType,
                                                     out resolvedContentTypeEncoding);
 
@@ -101,7 +105,7 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal
 
             var serializerSettings = result.XmlSerializerSettings ?? FormattingUtilities.GetDefaultXmlWriterSettings();
 
-           
+
 
             var outputFormatterWriterContext = new OutputFormatterWriteContext(
                                                         context.HttpContext,

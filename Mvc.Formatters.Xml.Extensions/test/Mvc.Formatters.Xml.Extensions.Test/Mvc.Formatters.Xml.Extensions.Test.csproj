@@ -15,6 +15,7 @@
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
     <PackageId>Mvc.Formatters.Xml.Extensions.Test</PackageId>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
