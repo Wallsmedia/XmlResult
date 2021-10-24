@@ -24,9 +24,8 @@ namespace WebApplNetcore30
             // "AddXmlFormaterExtensions()" initialize the Asp .Net Core MVC to use of XmlResult and FromXmlBody:
             //  - It adds the XmlSerializer and DataContractSerializer formatters to MVC.
             //  - It adds the XmlResult and FromXmlBody Extension to MVC.
-
-            //services.AddMvc().AddXmlFormaterExtensions().AddNewtonsoftJson();
-            services.AddControllers().AddXmlFormaterExtensions().AddNewtonsoftJson();
+                        
+            services.AddControllers().AddXmlFormaterExtensions();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
