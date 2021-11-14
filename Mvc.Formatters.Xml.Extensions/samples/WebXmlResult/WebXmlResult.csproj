@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Remove Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions\Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions.csproj" />
