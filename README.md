@@ -9,13 +9,6 @@
 ### Nuget Package: 
 https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions 
 
-### Development Supported by JetBrains Open Source Program:
-
-**Rider** <a href="https://www.jetbrains.com/?from=XmlResult"> <img src="https://github.com/Wallsmedia/XmlResult/blob/master/Logo/rider/logo.png?raw=true" Width="40p" /></a> **Fast & powerful,
-cross platform .NET IDE**
-
-**ReSharper** <a href="https://www.jetbrains.com/?from=XmlResult"> <img src="https://github.com/Wallsmedia/XmlResult/blob/master/Logo/resharper/logo.png?raw=true" Width="40p" /></a> **The Visual Studio Extension for .NET Developers**
-
 ### ASP.NET Core MVC Xml formatter's extensions allow:
 
 1. ASP.NET MVC Core Web Application controller actions to control the Xml serialization type.
