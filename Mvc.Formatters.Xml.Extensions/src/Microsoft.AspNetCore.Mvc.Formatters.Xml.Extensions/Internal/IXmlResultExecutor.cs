@@ -4,16 +4,15 @@
 using Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions;
 using System.Threading.Tasks;
 
-namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal
+namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal;
+
+public interface IXmlResultExecutor
 {
-    public interface IXmlResultExecutor
-    {
-        /// <summary>
-        /// Executes the <see cref="XmlResult"/> and writes the response.
-        /// </summary>
-        /// <param name="context">The <see cref="ActionContext"/>.</param>
-        /// <param name="result">The <see cref="XmlResult"/>.</param>
-        /// <returns>A <see cref="Task"/> which will complete when writing has completed.</returns>
-        Task ExecuteAsync(ActionContext context, XmlResult result);
-    }
+    /// <summary>
+    /// Executes the <see cref="XmlResult"/> and writes the response.
+    /// </summary>
+    /// <param name="context">The <see cref="ActionContext"/>.</param>
+    /// <param name="result">The <see cref="XmlResult"/>.</param>
+    /// <returns>A <see cref="Task"/> which will complete when writing has completed.</returns>
+    Task ExecuteAsync(ActionContext context, XmlResult result);
 }

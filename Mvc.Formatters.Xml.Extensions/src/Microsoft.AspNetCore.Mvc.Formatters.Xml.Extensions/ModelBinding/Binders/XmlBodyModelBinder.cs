@@ -8,46 +8,45 @@ using Microsoft.Extensions.Options;
 using System;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
-namespace Microsoft.AspNetCore.Mvc.ModelBinding.Binders
+namespace Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+
+/// <summary>
+/// An <see cref="IModelBinder"/> which binds models from the request body using an <see cref="XmlSerializerInputFormatter"/>as the first entry in the list of formatters
+/// when a model has the binding source <see cref="BindingSource.Body"/>.
+/// </summary>
+public class XmlBodyModelBinder : IModelBinder
 {
+    BodyModelBinder BodyModelBinder { get; }
+
     /// <summary>
-    /// An <see cref="IModelBinder"/> which binds models from the request body using an <see cref="XmlSerializerInputFormatter"/>as the first entry in the list of formatters
-    /// when a model has the binding source <see cref="BindingSource.Body"/>.
+    /// Creates a new <see cref="XmlBodyModelBinder"/>.
     /// </summary>
-    public class XmlBodyModelBinder : IModelBinder
+    /// <param name="options">The configuration for the MVC framework.</param>
+    /// <param name="readerFactory">
+    /// The <see cref="IHttpRequestStreamReaderFactory"/>, used to create <see cref="System.IO.TextReader"/>
+    /// instances for reading the request body.
+    /// </param>
+    public XmlBodyModelBinder(IOptions<MvcOptions> options, IHttpRequestStreamReaderFactory readerFactory)
     {
-        BodyModelBinder BodyModelBinder { get; }
-
-        /// <summary>
-        /// Creates a new <see cref="XmlBodyModelBinder"/>.
-        /// </summary>
-        /// <param name="options">The configuration for the MVC framework.</param>
-        /// <param name="readerFactory">
-        /// The <see cref="IHttpRequestStreamReaderFactory"/>, used to create <see cref="System.IO.TextReader"/>
-        /// instances for reading the request body.
-        /// </param>
-        public XmlBodyModelBinder(IOptions<MvcOptions> options, IHttpRequestStreamReaderFactory readerFactory)
+        if (options == null)
         {
-            if (options == null)
-            {
-                throw new ArgumentNullException(nameof(options));
-            }
-
-            if (readerFactory == null)
-            {
-                throw new ArgumentNullException(nameof(readerFactory));
-            }
-
-            IList<IInputFormatter> formatters = options.Value.InputFormatters;
-            var list = new List<IInputFormatter>() { new XmlSerializerInputFormatter(options.Value) };
-            list.AddRange(formatters);
-            BodyModelBinder = new BodyModelBinder(list, readerFactory);
+            throw new ArgumentNullException(nameof(options));
         }
 
-        /// <inheritdoc />
-        public Task BindModelAsync(ModelBindingContext bindingContext)
+        if (readerFactory == null)
         {
-            return BodyModelBinder.BindModelAsync(bindingContext);
+            throw new ArgumentNullException(nameof(readerFactory));
         }
+
+        IList<IInputFormatter> formatters = options.Value.InputFormatters;
+        var list = new List<IInputFormatter>() { new XmlSerializerInputFormatter(options.Value) };
+        list.AddRange(formatters);
+        BodyModelBinder = new BodyModelBinder(list, readerFactory);
+    }
+
+    /// <inheritdoc />
+    public Task BindModelAsync(ModelBindingContext bindingContext)
+    {
+        return BodyModelBinder.BindModelAsync(bindingContext);
     }
 }

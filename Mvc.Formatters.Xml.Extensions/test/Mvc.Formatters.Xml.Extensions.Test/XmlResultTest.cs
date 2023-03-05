@@ -78,7 +78,7 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions
             await result.ExecuteResultAsync(context);
 
             // Assert
-            Assert.Equal(context.HttpContext.Response.StatusCode, StatusCodes.Status406NotAcceptable);
+            Assert.Equal(context.HttpContext?.Response.StatusCode, StatusCodes.Status406NotAcceptable);
         }
 
         [Fact]
@@ -105,10 +105,10 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions
 
             StringReader sreader = new StringReader(sWritten);
             DataContractSerializer ser = new DataContractSerializer(typeof(PurchaseOrder));
-            PurchaseOrder newValue = (PurchaseOrder)ser.ReadObject(XmlReader.Create(sreader));
+            PurchaseOrder? newValue = (PurchaseOrder)ser.ReadObject(XmlReader.Create(sreader))!;
 
-            Assert.Equal(value.billTo.street, newValue.billTo.street);
-            Assert.Equal(value.shipTo.street, newValue.shipTo.street);
+            Assert.Equal(value.billTo.street, newValue?.billTo?.street);
+            Assert.Equal(value.shipTo.street, newValue?.shipTo?.street);
         }
 
         [Fact]
@@ -125,7 +125,7 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions
             // Act
             await result.ExecuteResultAsync(context);
 
-            Assert.Equal(context.HttpContext.Response.StatusCode, StatusCodes.Status406NotAcceptable);
+            Assert.Equal(context.HttpContext?.Response.StatusCode, StatusCodes.Status406NotAcceptable);
         }
 
         private static HttpContext CreateServices(HttpContext httpContext, bool empty = false)

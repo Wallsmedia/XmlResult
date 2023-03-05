@@ -1,63 +1,64 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="../../build/dependencies.props" />
+	<Import Project="../../build/dependencies.props" />
 
-  <PropertyGroup>
-    <TargetFramework>$(DotNetCoreAppTarget)</TargetFramework>
-    <IsAspNetCoreApp>true</IsAspNetCoreApp>
-    <PackageTags>aspnetcore;aspnetcoremvc;xml</PackageTags>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>$(DotNetCoreAppTarget)</TargetFramework>
+		<IsAspNetCoreApp>true</IsAspNetCoreApp>
+		<PackageTags>aspnetcore;aspnetcoremvc;xml</PackageTags>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup Condition="'$(DisableImplicitFrameworkReferences)' != 'true' And '$(TargetFrameworkIdentifier)' == '.NETCoreApp' And '$(_TargetFrameworkVersionWithoutV)' &gt;= '3.0'">
-    <FrameworkReference Include="Microsoft.AspNetCore.App" IsImplicitlyDefined="true" />
-  </ItemGroup>
+	<ItemGroup Condition="'$(DisableImplicitFrameworkReferences)' != 'true' And '$(TargetFrameworkIdentifier)' == '.NETCoreApp' And '$(_TargetFrameworkVersionWithoutV)' &gt;= '3.0'">
+		<FrameworkReference Include="Microsoft.AspNetCore.App" IsImplicitlyDefined="true" />
+	</ItemGroup>
 
 
-  <PropertyGroup>
-    <Description>XmlResult and FromXmlBody are ASP.NET Core MVC Xml formatters [Microsoft.AspNetCore.Mvc.Formatters.Xml] extensions. They allow precisely define which of the Xml formatters DataContractSerializer or/and XmlSerializer to use for input and output in the Web Application controller actions.</Description>
-    <Version>$(XmlResultVersion)</Version>
-    <AssemblyVersion>$(XmlResultVersion)</AssemblyVersion>
-    <FileVersion>$(XmlResultVersion)</FileVersion>
-    <Authors>Alexander Paskhin</Authors>
-    <Copyright>Copyright (c) $([System.DateTime]::Now.ToString('yyyy')) .NET Foundation. All rights reserved.</Copyright>
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <AssemblyName>Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions</AssemblyName>
-    <AssemblyOriginatorKeyFile>../../build/Key.snk</AssemblyOriginatorKeyFile>
-    <SignAssembly>true</SignAssembly>
-    <PackageId>Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions</PackageId>
-    <PackageTags>aspnetcore;aspnetcoremvc;xml;xmlresult;fromxmlbody</PackageTags>
-    <PackageReleaseNotes>Released for  Microsoft.AspNetCore.App 6.0.0</PackageReleaseNotes>
-    <PackageProjectUrl>http://github.com/Wallsmedia/XmlResult</PackageProjectUrl>
-    <PackageLicenseUrl></PackageLicenseUrl>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>git://github.com/Wallsmedia/XmlResult</RepositoryUrl>
-    <ApplicationIcon />
-    <OutputType>Library</OutputType>
-    <StartupObject />
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-  </PropertyGroup>
+	<PropertyGroup>
+		<Description>XmlResult and FromXmlBody are ASP.NET Core MVC Xml formatters [Microsoft.AspNetCore.Mvc.Formatters.Xml] extensions. They allow precisely define which of the Xml formatters DataContractSerializer or/and XmlSerializer to use for input and output in the Web Application controller actions.</Description>
+		<Version>$(XmlResultVersion)</Version>
+		<AssemblyVersion>$(XmlResultVersion)</AssemblyVersion>
+		<FileVersion>$(XmlResultVersion)</FileVersion>
+		<Authors>Alexander Paskhin</Authors>
+		<Copyright>Copyright (c) $([System.DateTime]::Now.ToString('yyyy')) .NET Foundation. All rights reserved.</Copyright>
+		<NoWarn>$(NoWarn);CS1591</NoWarn>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<AssemblyName>Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions</AssemblyName>
+		<AssemblyOriginatorKeyFile>../../build/Key.snk</AssemblyOriginatorKeyFile>
+		<SignAssembly>true</SignAssembly>
+		<PackageId>Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions</PackageId>
+		<PackageTags>aspnetcore;aspnetcoremvc;xml;xmlresult;fromxmlbody</PackageTags>
+		<PackageReleaseNotes>Released for  Microsoft.AspNetCore.App 7.0.0</PackageReleaseNotes>
+		<PackageProjectUrl>http://github.com/Wallsmedia/XmlResult</PackageProjectUrl>
+		<PackageLicenseUrl></PackageLicenseUrl>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>git://github.com/Wallsmedia/XmlResult</RepositoryUrl>
+		<ApplicationIcon />
+		<OutputType>Library</OutputType>
+		<StartupObject />
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+	</PropertyGroup>
 
- 
-  <ItemGroup>
-    <None Include="..\..\LICENSE.txt">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Content Update="Properties\launchSettings.json">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <Pack>False</Pack>
-    </Content>
-  </ItemGroup>
-  
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <IsPackable>true</IsPackable>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageOutputPath>../../.nupkgs</PackageOutputPath>
-  </PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\LICENSE.txt">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Update="Properties\launchSettings.json">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<Pack>False</Pack>
+		</Content>
+	</ItemGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+		<IsPackable>true</IsPackable>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageOutputPath>../../.nupkgs</PackageOutputPath>
+	</PropertyGroup>
 
 </Project>

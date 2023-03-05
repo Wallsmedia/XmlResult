@@ -6,43 +6,42 @@ using Microsoft.AspNetCore.Mvc.Formatters.Xml.Internal;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace Microsoft.Extensions.DependencyInjection;
+
+/// <summary>
+/// Extension methods for adding Xml formatters to MVC.
+/// </summary>
+public static class MvcXmlMvcCoreBuilderExtensions
 {
     /// <summary>
-    /// Extension methods for adding Xml formatters to MVC.
+    /// Adds the XmlSerializer and DataContractSerializer formatters to MVC.
+    /// Adds the XmlResult and FromXmlBody Extension to MVC.
     /// </summary>
-    public static class MvcXmlMvcCoreBuilderExtensions
+    /// <param name="builder">The <see cref="IMvcCoreBuilder"/>.</param>
+    /// <returns>The <see cref="IMvcCoreBuilder"/>.</returns>
+    public static IMvcCoreBuilder AddXmlFormaterExtensions(this IMvcCoreBuilder builder)
     {
-        /// <summary>
-        /// Adds the XmlSerializer and DataContractSerializer formatters to MVC.
-        /// Adds the XmlResult and FromXmlBody Extension to MVC.
-        /// </summary>
-        /// <param name="builder">The <see cref="IMvcCoreBuilder"/>.</param>
-        /// <returns>The <see cref="IMvcCoreBuilder"/>.</returns>
-        public static IMvcCoreBuilder AddXmlFormaterExtensions(this IMvcCoreBuilder builder)
+        if (builder == null)
         {
-            if (builder == null)
-            {
-                throw new ArgumentNullException(nameof(builder));
-            }
-
-            builder.AddXmlDataContractSerializerFormatters();
-            builder.AddXmlSerializerFormatters();
-            AddXmlFormaterExtensionsServices(builder.Services);
-
-            return builder;
+            throw new ArgumentNullException(nameof(builder));
         }
 
-        // Internal for testing.
-        internal static void AddXmlFormaterExtensionsServices(IServiceCollection services)
-        {
-            services.TryAddSingleton<XmlDcResultExecutor>();
-            services.TryAddTransient<DcXmlBodyModelBinder>();
-            services.TryAddTransient<DcXmlBodyModelBinderOnly>();
+        builder.AddXmlDataContractSerializerFormatters();
+        builder.AddXmlSerializerFormatters();
+        AddXmlFormaterExtensionsServices(builder.Services);
 
-            services.TryAddSingleton<XmlResultExecutor>();
-            services.TryAddTransient<XmlBodyModelBinder>();
-            services.TryAddTransient<XmlBodyModelBinderOnly>();
-        }
+        return builder;
+    }
+
+    // Internal for testing.
+    internal static void AddXmlFormaterExtensionsServices(IServiceCollection services)
+    {
+        services.TryAddSingleton<XmlDcResultExecutor>();
+        services.TryAddTransient<DcXmlBodyModelBinder>();
+        services.TryAddTransient<DcXmlBodyModelBinderOnly>();
+
+        services.TryAddSingleton<XmlResultExecutor>();
+        services.TryAddTransient<XmlBodyModelBinder>();
+        services.TryAddTransient<XmlBodyModelBinderOnly>();
     }
 }

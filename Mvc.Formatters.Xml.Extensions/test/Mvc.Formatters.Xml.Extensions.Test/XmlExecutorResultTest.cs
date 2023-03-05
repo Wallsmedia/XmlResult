@@ -43,8 +43,8 @@ namespace Mvc.Formatters.Xml.Extensions.Test
             CreateServices(context.HttpContext);
 
             var services = context.HttpContext.RequestServices;
-            IXmlResultExecutor executor = null;
-            executor = services.GetService<XmlResultExecutor>();
+            IXmlResultExecutor? executor = null;
+            executor = services.GetService<XmlResultExecutor>()!;
             var result = new XmlResult(value);
 
             // Act
@@ -72,8 +72,8 @@ namespace Mvc.Formatters.Xml.Extensions.Test
             //
             var result = new XmlResult(value) { XmlSerializerType = XmlSerializerType.DataContractSerializer };
             var services = context.HttpContext.RequestServices;
-            IXmlResultExecutor executor = null;
-            executor = services.GetService<XmlDcResultExecutor>();
+            IXmlResultExecutor? executor = null;
+            executor = services.GetService<XmlDcResultExecutor>()!;
 
             // Act
             await executor.ExecuteAsync(context, result);
@@ -88,10 +88,10 @@ namespace Mvc.Formatters.Xml.Extensions.Test
 
             StringReader sreader = new StringReader(sWritten);
             DataContractSerializer ser = new DataContractSerializer(typeof(PurchaseOrder));
-            PurchaseOrder newValue = (PurchaseOrder)ser.ReadObject(XmlReader.Create(sreader));
+            PurchaseOrder? newValue = (PurchaseOrder)ser.ReadObject(XmlReader.Create(sreader))!;
 
-            Assert.Equal(value.billTo.street, newValue.billTo.street);
-            Assert.Equal(value.shipTo.street, newValue.shipTo.street);
+            Assert.Equal(value.billTo.street, newValue?.billTo?.street);
+            Assert.Equal(value.shipTo.street, newValue?.shipTo?.street);
         }
 
 

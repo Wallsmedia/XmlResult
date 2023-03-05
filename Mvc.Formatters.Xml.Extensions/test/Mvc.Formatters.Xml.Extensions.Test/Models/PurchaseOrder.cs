@@ -21,7 +21,7 @@ namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Test.Models
     public class Address
     {
         [DataMember]
-        public string street;
+        public string? street;
     }
 
 }

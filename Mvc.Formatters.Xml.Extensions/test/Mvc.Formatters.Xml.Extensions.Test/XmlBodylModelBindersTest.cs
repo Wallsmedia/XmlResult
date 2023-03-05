@@ -109,7 +109,7 @@ namespace Mvc.Formatters.Xml.Extensions.Test
             "model");
 
             //*2
-            ModelBinderProviderContext modelBinderProviderContext = new TestModelBinderProviderContext(parameterModelMetadata, parameterDescriptor.BindingInfo, metadataProvider);
+            ModelBinderProviderContext modelBinderProviderContext = new TestModelBinderProviderContext(parameterModelMetadata, parameterDescriptor.BindingInfo!, metadataProvider);
             BinderTypeModelBinderProvider binderTypeModelBinderProvider = new BinderTypeModelBinderProvider();
 
             // Act

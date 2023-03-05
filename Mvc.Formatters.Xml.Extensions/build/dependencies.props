@@ -1,8 +1,8 @@
 <Project>
   <PropertyGroup>
-    <DotNetCoreAppTarget>net6.0</DotNetCoreAppTarget>
+    <DotNetCoreAppTarget>net7.0</DotNetCoreAppTarget>
     <DotNetCoreStandardTarget>netstandard2.1</DotNetCoreStandardTarget>
-    <XmlResultVersion>6.0.0</XmlResultVersion>
+    <XmlResultVersion>7.0.0</XmlResultVersion>
   </PropertyGroup>
 
 </Project>

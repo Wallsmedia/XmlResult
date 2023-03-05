@@ -6,24 +6,23 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Options;
 
-namespace Microsoft.AspNetCore.Mvc.ModelBinding.Binders
+namespace Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+
+/// <summary>
+/// An <see cref="IModelBinder"/> which binds models from the request body using an <see cref="XmlDataContractSerializerInputFormatter"/> only
+/// when a model has the binding source <see cref="BindingSource.Body"/>.
+/// </summary>
+public class DcXmlBodyModelBinderOnly : BodyModelBinder
 {
     /// <summary>
-    /// An <see cref="IModelBinder"/> which binds models from the request body using an <see cref="XmlDataContractSerializerInputFormatter"/> only
-    /// when a model has the binding source <see cref="BindingSource.Body"/>.
+    /// Creates a new <see cref="DcXmlBodyModelBinderOnly"/>.
     /// </summary>
-    public class DcXmlBodyModelBinderOnly : BodyModelBinder
+    /// <param name="options">The configuration for the MVC framework.</param>
+    /// <param name="readerFactory">
+    /// The <see cref="IHttpRequestStreamReaderFactory"/>, used to create <see cref="System.IO.TextReader"/>
+    /// instances for reading the request body.
+    /// </param>
+    public DcXmlBodyModelBinderOnly(IOptions<MvcOptions> options, IHttpRequestStreamReaderFactory readerFactory) : base(new List<IInputFormatter>() { new XmlDataContractSerializerInputFormatter(options.Value) }, readerFactory)
     {
-        /// <summary>
-        /// Creates a new <see cref="DcXmlBodyModelBinderOnly"/>.
-        /// </summary>
-        /// <param name="options">The configuration for the MVC framework.</param>
-        /// <param name="readerFactory">
-        /// The <see cref="IHttpRequestStreamReaderFactory"/>, used to create <see cref="System.IO.TextReader"/>
-        /// instances for reading the request body.
-        /// </param>
-        public DcXmlBodyModelBinderOnly(IOptions<MvcOptions> options, IHttpRequestStreamReaderFactory readerFactory) : base(new List<IInputFormatter>() { new XmlDataContractSerializerInputFormatter(options.Value) }, readerFactory)
-        {
-        }
     }
 }

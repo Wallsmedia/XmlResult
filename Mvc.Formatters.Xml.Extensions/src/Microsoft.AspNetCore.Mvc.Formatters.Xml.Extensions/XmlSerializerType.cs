@@ -3,14 +3,13 @@
 
 using System;
 
-namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions
+namespace Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions;
+
+/// <summary>
+/// Defines the type selector of the serializer
+/// </summary>
+public enum XmlSerializerType
 {
-    /// <summary>
-    /// Defines the type selector of the serializer
-    /// </summary>
-    public enum XmlSerializerType
-    {
-        XmlSerializer = 0,
-        DataContractSerializer = 1
-    }
+    XmlSerializer = 0,
+    DataContractSerializer = 1
 }
