@@ -22,46 +22,46 @@ namespace Microsoft.AspNetCore.Mvc;
 /// <summary>
 /// Sets up default options for <see cref="MvcOptions"/>.
 /// </summary>
-internal sealed class MvcCoreMvcOptionsSetup : IConfigureOptions<MvcOptions>, IPostConfigureOptions<MvcOptions> {
+internal sealed class MvcCoreMvcOptionsSetup : IConfigureOptions<MvcOptions>, IPostConfigureOptions<MvcOptions>
+{
     private readonly IHttpRequestStreamReaderFactory _readerFactory;
     private readonly ILoggerFactory _loggerFactory;
     private readonly IOptions<JsonOptions> _jsonOptions;
 
     public MvcCoreMvcOptionsSetup(IHttpRequestStreamReaderFactory readerFactory)
-        : this(readerFactory, NullLoggerFactory.Instance, Options.Create(new JsonOptions())) {
+        : this(readerFactory, NullLoggerFactory.Instance, Options.Create(new JsonOptions()))
+    {
     }
 
-    public MvcCoreMvcOptionsSetup(IHttpRequestStreamReaderFactory readerFactory, ILoggerFactory loggerFactory, IOptions<JsonOptions> jsonOptions) {
-        if (readerFactory == null) {
-            throw new ArgumentNullException(nameof(readerFactory));
-        }
-
-        if (loggerFactory == null) {
-            throw new ArgumentNullException(nameof(loggerFactory));
-        }
-
-        if (jsonOptions == null) {
-            throw new ArgumentNullException(nameof(jsonOptions));
-        }
+    public MvcCoreMvcOptionsSetup(IHttpRequestStreamReaderFactory readerFactory, ILoggerFactory loggerFactory, IOptions<JsonOptions> jsonOptions)
+    {
+        ArgumentNullException.ThrowIfNull(readerFactory);
+        ArgumentNullException.ThrowIfNull(loggerFactory);
+        ArgumentNullException.ThrowIfNull(jsonOptions);
 
         _readerFactory = readerFactory;
         _loggerFactory = loggerFactory;
         _jsonOptions = jsonOptions;
     }
 
-    static SystemTextJsonOutputFormatter CreateFormatter(JsonOptions jsonOptions) {
+    static SystemTextJsonOutputFormatter CreateFormatter(JsonOptions jsonOptions)
+    {
         var jsonSerializerOptions = jsonOptions.JsonSerializerOptions;
 
-        if (jsonSerializerOptions.Encoder is null) {
+        if (jsonSerializerOptions.Encoder is null)
+        {
             // If the user hasn't explicitly configured the encoder, use the less strict encoder that does not encode all non-ASCII characters.
-            jsonSerializerOptions = new JsonSerializerOptions(jsonSerializerOptions) {
+            jsonSerializerOptions = new JsonSerializerOptions(jsonSerializerOptions)
+            {
                 Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             };
         }
 
         return new SystemTextJsonOutputFormatter(jsonSerializerOptions);
     }
-    public void Configure(MvcOptions options) {
+
+    public void Configure(MvcOptions options)
+    {
         // Set up ModelBinding
         options.ModelBinderProviders.Add(new BinderTypeModelBinderProvider());
         options.ModelBinderProviders.Add(new ServicesModelBinderProvider());
@@ -70,8 +70,8 @@ internal sealed class MvcCoreMvcOptionsSetup : IConfigureOptions<MvcOptions>, IP
         options.ModelBinderProviders.Add(new FloatingPointTypeModelBinderProvider());
         options.ModelBinderProviders.Add(new EnumTypeModelBinderProvider(options));
         options.ModelBinderProviders.Add(new DateTimeModelBinderProvider());
-        options.ModelBinderProviders.Add(new TryParseModelBinderProvider());
         options.ModelBinderProviders.Add(new SimpleTypeModelBinderProvider());
+        options.ModelBinderProviders.Add(new TryParseModelBinderProvider());
         options.ModelBinderProviders.Add(new CancellationTokenModelBinderProvider());
         options.ModelBinderProviders.Add(new ByteArrayModelBinderProvider());
         options.ModelBinderProviders.Add(new FormFileModelBinderProvider());
@@ -113,7 +113,8 @@ internal sealed class MvcCoreMvcOptionsSetup : IConfigureOptions<MvcOptions>, IP
         options.ModelValidatorProviders.Add(new DefaultModelValidatorProvider());
     }
 
-    public void PostConfigure(string? name, MvcOptions options) {
+    public void PostConfigure(string? name, MvcOptions options)
+    {
         // HasValidatorsValidationMetadataProvider uses the results of other ValidationMetadataProvider to determine if a model requires
         // validation. It is imperative that this executes later than all other metadata provider. We'll register it as part of PostConfigure.
         // This should ensure it appears later than all of the details provider registered by MVC and user configured details provider registered
@@ -121,7 +122,8 @@ internal sealed class MvcCoreMvcOptionsSetup : IConfigureOptions<MvcOptions>, IP
         options.ModelMetadataDetailsProviders.Add(new HasValidatorsValidationMetadataProvider(options.ModelValidatorProviders));
     }
 
-    internal static void ConfigureAdditionalModelMetadataDetailsProviders(IList<IMetadataDetailsProvider> modelMetadataDetailsProviders) {
+    internal static void ConfigureAdditionalModelMetadataDetailsProviders(IList<IMetadataDetailsProvider> modelMetadataDetailsProviders)
+    {
         // Don't bind the Type class by default as it's expensive. A user can override this behavior
         // by altering the collection of providers.
         modelMetadataDetailsProviders.Add(new ExcludeBindingMetadataProvider(typeof(Type)));

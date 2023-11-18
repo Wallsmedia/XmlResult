@@ -24,10 +24,7 @@ internal sealed class HasValidatorsValidationMetadataProvider : IValidationMetad
 
     public void CreateValidationMetadata(ValidationMetadataProviderContext context)
     {
-        if (context == null)
-        {
-            throw new ArgumentNullException(nameof(context));
-        }
+        ArgumentNullException.ThrowIfNull(context);
 
         if (!_hasOnlyMetadataBasedValidators)
         {
@@ -54,7 +51,7 @@ internal sealed class HasValidatorsValidationMetadataProvider : IValidationMetad
 
                     if (provider.HasValidators(typeof(object), propertyAttributes))
                     {
-                       // context.ValidationMetadata.PropertyHasValidators = true;
+                        //context.ValidationMetadata.PropertyHasValidators = true;
                     }
                 }
             }

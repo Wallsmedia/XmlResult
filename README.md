@@ -1,12 +1,11 @@
 ### ASP.NET Core MVC Xml formatter extensions
 
+**Version 8.x.x** : supports only NetCore 8.0 
+
 **Version 7.x.x** : supports only NetCore 7.0 
 
 **Version 6.x.x** : supports only NetCore 6.0 
 
-**Version 5.x.x** : supports only NetCore 5.0
-
-**Version 3.1.x** : supports only NetCore 3.1.0
 
 ### Nuget Package: 
 https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions 
