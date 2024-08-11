@@ -33,7 +33,7 @@ namespace Mvc.Formatters.Xml.Extensions.Test
         [InlineData(XmlSerializerType.XmlSerializer, true)]
         [InlineData(XmlSerializerType.DataContractSerializer, false)]
         [InlineData(XmlSerializerType.DataContractSerializer, true)]
-        public async void BindTheXmlBodyToTheParameterValue(XmlSerializerType xmlSerializerType, bool useXmlBinderOnly)
+        public async Task BindTheXmlBodyToTheParameterValue(XmlSerializerType xmlSerializerType, bool useXmlBinderOnly)
         {
             // Arrange 
             byte[] bodyRequestContext = new byte[0];

@@ -1,8 +1,11 @@
 <Project>
   <PropertyGroup>
+
     <DotNetCoreAppTarget>net8.0</DotNetCoreAppTarget>
     <DotNetCoreStandardTarget>netstandard2.1</DotNetCoreStandardTarget>
     <XmlResultVersion>8.0.0</XmlResultVersion>
-  </PropertyGroup>
-</Project>
+    <XmlResultAssemblyVersion>8.0.0</XmlResultAssemblyVersion>
+  
+</PropertyGroup>
 
+</Project>
