@@ -1,10 +1,10 @@
 <Project>
   <PropertyGroup>
 
-    <DotNetCoreAppTarget>net9.0</DotNetCoreAppTarget>
+    <DotNetCoreAppTarget>net10.0</DotNetCoreAppTarget>
     <DotNetCoreStandardTarget>netstandard2.1</DotNetCoreStandardTarget>
-    <XmlResultVersion>9.0.0</XmlResultVersion>
-    <XmlResultAssemblyVersion>9.0.0</XmlResultAssemblyVersion>
+    <XmlResultVersion>10.0.0</XmlResultVersion>
+    <XmlResultAssemblyVersion>10.0.0</XmlResultAssemblyVersion>
   
 </PropertyGroup>
 
